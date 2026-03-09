@@ -7,87 +7,31 @@ import Link from "next/link"
 const professionals = [
   {
     id: 1,
-    name: "Dr. Sarah Mitchell",
-    specialty: "Anxiety & Depression",
-    credentials: "PhD, Licensed Clinical Psychologist",
+    name: "Dr. Louise Brenda",
+    specialty: "Mental Health & Wellness",
+    credentials: "Licensed Clinical Psychologist",
     rating: 4.9,
     reviews: 128,
     hourlyRate: 120,
     availability: "Mon-Fri, 9am-6pm",
-    bio: "Specializing in cognitive behavioral therapy for anxiety and depression with 12+ years of experience.",
-    image: "/professional-therapist-woman.png",
-    languages: ["English", "Spanish"],
+    bio: "Dedicated to providing comprehensive mental health support with a compassionate approach and evidence-based therapeutic techniques.",
+    image: null,
+    languages: ["English"],
     experience: "12+ years",
   },
   {
     id: 2,
-    name: "Dr. James Chen",
-    specialty: "Trauma & PTSD",
-    credentials: "MD, Board-Certified Psychiatrist",
+    name: "Malusha Manase",
+    specialty: "Counseling & Support",
+    credentials: "Licensed Professional Counselor",
     rating: 4.8,
     reviews: 95,
-    hourlyRate: 150,
-    availability: "Tue-Sat, 10am-7pm",
-    bio: "Expert in trauma-focused therapy and PTSD treatment using evidence-based approaches.",
-    image: "/professional-therapist-man.jpg",
-    languages: ["English", "Mandarin"],
-    experience: "15+ years",
-  },
-  {
-    id: 3,
-    name: "Dr. Maria Rodriguez",
-    specialty: "Relationship Counseling",
-    credentials: "LMFT, Licensed Marriage & Family Therapist",
-    rating: 4.9,
-    reviews: 142,
-    hourlyRate: 130,
-    availability: "Mon-Thu, 2pm-8pm",
-    bio: "Helping couples and families improve communication and build stronger relationships.",
-    image: "/professional-therapist-woman.png",
-    languages: ["English", "Spanish", "Portuguese"],
-    experience: "10+ years",
-  },
-  {
-    id: 4,
-    name: "Dr. Michael Thompson",
-    specialty: "Stress Management",
-    credentials: "MA, Licensed Professional Counselor",
-    rating: 4.7,
-    reviews: 87,
     hourlyRate: 110,
-    availability: "Wed-Sun, 11am-7pm",
-    bio: "Specializing in stress reduction, mindfulness, and work-life balance coaching.",
-    image: "/professional-therapist-man.jpg",
+    availability: "Tue-Sat, 10am-7pm",
+    bio: "Specializing in personalized counseling services to help clients achieve emotional wellness and build resilience.",
+    image: null,
     languages: ["English"],
-    experience: "8+ years",
-  },
-  {
-    id: 5,
-    name: "Dr. Emily Watson",
-    specialty: "Eating Disorders",
-    credentials: "PhD, Registered Dietitian Psychologist",
-    rating: 4.9,
-    reviews: 110,
-    hourlyRate: 140,
-    availability: "Mon-Fri, 8am-5pm",
-    bio: "Comprehensive treatment for eating disorders combining therapy and nutritional counseling.",
-    image: "/professional-therapist-woman.png",
-    languages: ["English"],
-    experience: "11+ years",
-  },
-  {
-    id: 6,
-    name: "Dr. David Park",
-    specialty: "Addiction & Recovery",
-    credentials: "LCSW, Certified Addiction Specialist",
-    rating: 4.8,
-    reviews: 103,
-    hourlyRate: 125,
-    availability: "Tue-Sat, 9am-6pm",
-    bio: "Specialized treatment for substance abuse and addiction recovery with compassionate care.",
-    image: "/professional-therapist-man.jpg",
-    languages: ["English", "Korean"],
-    experience: "13+ years",
+    experience: "10+ years",
   },
 ]
 
@@ -170,11 +114,18 @@ export default function ProfessionalsPage() {
                 className="bg-card border border-border rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
               >
                 {/* Image */}
-                <img
-                  src={professional.image || "/placeholder.svg"}
-                  alt={professional.name}
-                  className="w-full h-48 object-cover"
-                />
+                {professional.image && (
+                  <img
+                    src={professional.image}
+                    alt={professional.name}
+                    className="w-full h-48 object-cover"
+                  />
+                )}
+                {!professional.image && (
+                  <div className="w-full h-48 bg-secondary flex items-center justify-center">
+                    <p className="text-muted-foreground">Coming Soon</p>
+                  </div>
+                )}
 
                 {/* Content */}
                 <div className="p-6">
