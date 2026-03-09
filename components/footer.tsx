@@ -103,19 +103,19 @@ export default function Footer() {
             <ul className="space-y-3 text-sm">
               <li className="flex items-center gap-2 text-muted-foreground">
                 <Mail className="w-4 h-4" />
-                <a href="mailto:support@lockeroom.com" className="hover:text-primary transition-colors">
-                  support@lockeroom.com
+                <a href="mailto:support@lockeroomwellness.ke" className="hover:text-primary transition-colors">
+                  support@lockeroomwellness.ke
                 </a>
               </li>
               <li className="flex items-center gap-2 text-muted-foreground">
                 <Phone className="w-4 h-4" />
-                <a href="tel:+1234567890" className="hover:text-primary transition-colors">
-                  (123) 456-7890
+                <a href="tel:+254702123456" className="hover:text-primary transition-colors">
+                  +254 702 123 456
                 </a>
               </li>
               <li className="flex items-center gap-2 text-muted-foreground">
                 <MapPin className="w-4 h-4" />
-                <span>Available Nationwide</span>
+                <span>Kenya</span>
               </li>
             </ul>
           </div>

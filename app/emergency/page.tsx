@@ -111,29 +111,29 @@ export default function EmergencyPage() {
           <div className="overflow-x-auto rounded-lg border border-border">
             <table className="w-full">
               <thead>
-                <tr className="bg-[#d97560] text-white">
+                <tr style={{ backgroundColor: 'var(--emergency-table-header)' }} className="text-white">
                   <th className="px-6 py-4 text-left font-semibold">Organisation Name</th>
                   <th className="px-6 py-4 text-left font-semibold">Phone Number</th>
                   <th className="px-6 py-4 text-left font-semibold">Areas of Assistance</th>
                 </tr>
               </thead>
               <tbody>
-                <tr className="border-t border-[#d97560] bg-[#1a3a3a] text-white hover:bg-[#214545] transition-colors">
+                <tr style={{ backgroundColor: 'var(--emergency-table-body)', borderTopColor: 'var(--emergency-table-border)' }} className="border-t text-white hover:opacity-90 transition-opacity">
                   <td className="px-6 py-4">Red Cross</td>
                   <td className="px-6 py-4">1199</td>
                   <td className="px-6 py-4">All</td>
                 </tr>
-                <tr className="border-t border-[#d97560] bg-[#1a3a3a] text-white hover:bg-[#214545] transition-colors">
+                <tr style={{ backgroundColor: 'var(--emergency-table-body)', borderTopColor: 'var(--emergency-table-border)' }} className="border-t text-white hover:opacity-90 transition-opacity">
                   <td className="px-6 py-4">NACADA</td>
                   <td className="px-6 py-4">1192</td>
                   <td className="px-6 py-4">Drug abuse and recovery</td>
                 </tr>
-                <tr className="border-t border-[#d97560] bg-[#1a3a3a] text-white hover:bg-[#214545] transition-colors">
+                <tr style={{ backgroundColor: 'var(--emergency-table-body)', borderTopColor: 'var(--emergency-table-border)' }} className="border-t text-white hover:opacity-90 transition-opacity">
                   <td className="px-6 py-4">Center for Suicide Research and Intervention (CSRI)</td>
                   <td className="px-6 py-4">+254 703 388 130</td>
                   <td className="px-6 py-4">Suicide and Mental Health Crises</td>
                 </tr>
-                <tr className="border-t border-[#d97560] bg-[#1a3a3a] text-white hover:bg-[#214545] transition-colors">
+                <tr style={{ backgroundColor: 'var(--emergency-table-body)', borderTopColor: 'var(--emergency-table-border)' }} className="border-t text-white hover:opacity-90 transition-opacity">
                   <td className="px-6 py-4">Sexual and Gender Violence Helpline</td>
                   <td className="px-6 py-4">1195</td>
                   <td className="px-6 py-4">Sexual and gender-based violence</td>

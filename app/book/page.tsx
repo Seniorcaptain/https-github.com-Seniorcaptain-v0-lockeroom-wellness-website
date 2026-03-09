@@ -16,31 +16,17 @@ interface BookingData {
 const professionals = [
   {
     id: "1",
-    name: "Dr. Sarah Mitchell",
-    specialty: "Anxiety & Depression",
+    name: "Dr. Louise Brenda",
+    specialty: "Mental Health & Wellness",
     rate: 120,
-    image: "/professional-therapist-woman.png",
+    image: null,
   },
   {
     id: "2",
-    name: "Dr. James Chen",
-    specialty: "Trauma & PTSD",
-    rate: 150,
-    image: "/professional-therapist-man.jpg",
-  },
-  {
-    id: "3",
-    name: "Dr. Maria Rodriguez",
-    specialty: "Relationship Counseling",
-    rate: 130,
-    image: "/professional-therapist-woman.png",
-  },
-  {
-    id: "4",
-    name: "Dr. Michael Thompson",
-    specialty: "Stress Management",
+    name: "Malusha Manase",
+    specialty: "Counseling & Support",
     rate: 110,
-    image: "/professional-therapist-man.jpg",
+    image: null,
   },
 ]
 
@@ -149,17 +135,24 @@ export default function BookPage() {
                         : "border-border hover:border-primary/50"
                     }`}
                   >
-                    <div className="flex items-start gap-4">
-                      <img
-                        src={professional.image || "/placeholder.svg"}
-                        alt={professional.name}
-                        className="w-16 h-16 rounded-lg object-cover"
-                      />
+                    <div className="flex gap-3 items-start">
+                      {professional.image ? (
+                        <img
+                          src={professional.image}
+                          alt={professional.name}
+                          className="w-16 h-16 rounded-lg object-cover"
+                        />
+                      ) : (
+                        <div className="w-16 h-16 rounded-lg bg-secondary flex items-center justify-center text-xs text-muted-foreground text-center">
+                          Photo Coming Soon
+                        </div>
+                      )}
                       <div className="flex-1">
                         <h3 className="font-semibold text-foreground">{professional.name}</h3>
                         <p className="text-sm text-muted-foreground mb-2">{professional.specialty}</p>
                         <p className="text-sm font-medium text-primary">${professional.rate}/hour</p>
                       </div>
+                    </div>
                     </div>
                   </button>
                 ))}
@@ -249,13 +242,15 @@ export default function BookPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-foreground mb-3">
+                  <label htmlFor="booking-notes" className="block text-sm font-semibold text-foreground mb-3">
                     Additional Notes (Optional)
                   </label>
                   <textarea
+                    id="booking-notes"
                     value={bookingData.notes}
                     onChange={(e) => setBookingData({ ...bookingData, notes: e.target.value })}
                     placeholder="Tell your therapist about what you'd like to discuss..."
+                    aria-label="Additional notes for your booking"
                     className="w-full px-4 py-3 border border-border rounded-lg bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary resize-none"
                     rows={4}
                   />

@@ -38,6 +38,9 @@
   --sidebar-accent-foreground: oklch(0.35 0.12 140);
   --sidebar-border: oklch(0.92 0.01 70);
   --sidebar-ring: oklch(0.35 0.12 140);
+  --emergency-table-header: #d97560;
+  --emergency-table-body: #1a3a3a;
+  --emergency-table-border: #d97560;
 }
 
 .dark {
@@ -73,6 +76,9 @@
   --sidebar-accent-foreground: oklch(0.95 0.01 70);
   --sidebar-border: oklch(0.3 0.02 70);
   --sidebar-ring: oklch(0.55 0.15 140);
+  --emergency-table-header: #d97560;
+  --emergency-table-body: #1a3a3a;
+  --emergency-table-border: #d97560;
 }
 
 @theme inline {

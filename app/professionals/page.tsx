@@ -66,12 +66,15 @@ export default function ProfessionalsPage() {
           {/* Search Bar */}
           <div className="max-w-2xl mx-auto">
             <div className="relative">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+              <label htmlFor="professional-search" className="sr-only">Search professionals by name or specialty</label>
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground pointer-events-none" />
               <input
+                id="professional-search"
                 type="text"
                 placeholder="Search by name or specialty..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
+                aria-label="Search professionals by name or specialty"
                 className="w-full pl-12 pr-4 py-3 border border-border rounded-lg bg-card text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
               />
             </div>
@@ -83,21 +86,25 @@ export default function ProfessionalsPage() {
       <section className="py-16 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Filter Buttons */}
-          <div className="mb-12 flex flex-wrap gap-3">
-            {specialties.map((specialty) => (
-              <button
-                key={specialty}
-                onClick={() => setSelectedSpecialty(specialty)}
-                className={`px-4 py-2 rounded-full font-medium transition-colors ${
-                  selectedSpecialty === specialty
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-secondary text-foreground hover:bg-muted"
-                }`}
-              >
-                {specialty}
-              </button>
-            ))}
-          </div>
+          <fieldset className="mb-12">
+            <legend className="text-sm font-semibold text-foreground mb-4">Filter by Specialty</legend>
+            <div className="flex flex-wrap gap-3">
+              {specialties.map((specialty) => (
+                <button
+                  key={specialty}
+                  onClick={() => setSelectedSpecialty(specialty)}
+                  aria-pressed={selectedSpecialty === specialty}
+                  className={`px-4 py-2 rounded-full font-medium transition-colors ${
+                    selectedSpecialty === specialty
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-secondary text-foreground hover:bg-muted"
+                  }`}
+                >
+                  {specialty}
+                </button>
+              ))}
+            </div>
+          </fieldset>
 
           {/* Results Count */}
           <div className="mb-8">
@@ -189,14 +196,15 @@ export default function ProfessionalsPage() {
 
           {/* No Results */}
           {filteredProfessionals.length === 0 && (
-            <div className="text-center py-12">
+            <div className="text-center py-12" role="status" aria-live="polite">
               <p className="text-lg text-muted-foreground mb-4">No professionals found matching your criteria.</p>
               <button
                 onClick={() => {
                   setSearchTerm("")
                   setSelectedSpecialty("All")
                 }}
-                className="text-primary font-medium hover:underline"
+                className="text-primary font-medium hover:underline focus:outline-none focus:ring-2 focus:ring-primary rounded px-2 py-1"
+                aria-label="Clear all filters and show all professionals"
               >
                 Clear filters
               </button>
