@@ -153,7 +153,6 @@ export default function BookPage() {
                         <p className="text-sm font-medium text-primary">${professional.rate}/hour</p>
                       </div>
                     </div>
-                    </div>
                   </button>
                 ))}
               </div>
