@@ -108,50 +108,38 @@ export default function EmergencyPage() {
             <Shield className="w-8 h-8 text-primary" />
             <h2 className="text-3xl font-bold text-foreground">Kenya Crisis Hotlines</h2>
           </div>
-          <div className="grid gap-6">
-            {emergencyContacts.map((contact, index) => (
-              <div
-                key={index}
-                className="bg-card border border-border rounded-lg p-6 hover:shadow-md transition-shadow"
-              >
-                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
-                  <div className="flex-1">
-                    <h3 className="text-xl font-semibold text-foreground mb-2">{contact.name}</h3>
-                    <p className="text-muted-foreground mb-3">{contact.description}</p>
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
-                      <Clock className="w-4 h-4" />
-                      <span>{contact.availability}</span>
-                    </div>
-                  </div>
-                  <div className="flex flex-col gap-2 min-w-[200px]">
-                    {contact.phone && (
-                      <Button asChild className="w-full">
-                        <a href={`tel:${contact.phone}`} className="flex items-center gap-2">
-                          <Phone className="w-4 h-4" />
-                          {contact.phone}
-                        </a>
-                      </Button>
-                    )}
-                    {contact.altPhone && (
-                      <Button asChild variant="outline" className="w-full bg-transparent">
-                        <a href={`tel:${contact.altPhone}`} className="flex items-center gap-2">
-                          <Phone className="w-4 h-4" />
-                          {contact.altPhone}
-                        </a>
-                      </Button>
-                    )}
-                    {contact.email && (
-                      <Button asChild variant="outline" className="w-full bg-transparent">
-                        <a href={`mailto:${contact.email}`} className="flex items-center gap-2">
-                          <Mail className="w-4 h-4" />
-                          Email
-                        </a>
-                      </Button>
-                    )}
-                  </div>
-                </div>
-              </div>
-            ))}
+          <div className="overflow-x-auto rounded-lg border border-border">
+            <table className="w-full">
+              <thead>
+                <tr style={{ backgroundColor: 'var(--emergency-table-header)' }} className="text-white">
+                  <th className="px-6 py-4 text-left font-semibold">Organisation Name</th>
+                  <th className="px-6 py-4 text-left font-semibold">Phone Number</th>
+                  <th className="px-6 py-4 text-left font-semibold">Areas of Assistance</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style={{ backgroundColor: 'var(--emergency-table-body)', borderTopColor: 'var(--emergency-table-border)' }} className="border-t text-white hover:opacity-90 transition-opacity">
+                  <td className="px-6 py-4">Red Cross</td>
+                  <td className="px-6 py-4">1199</td>
+                  <td className="px-6 py-4">All</td>
+                </tr>
+                <tr style={{ backgroundColor: 'var(--emergency-table-body)', borderTopColor: 'var(--emergency-table-border)' }} className="border-t text-white hover:opacity-90 transition-opacity">
+                  <td className="px-6 py-4">NACADA</td>
+                  <td className="px-6 py-4">1192</td>
+                  <td className="px-6 py-4">Drug abuse and recovery</td>
+                </tr>
+                <tr style={{ backgroundColor: 'var(--emergency-table-body)', borderTopColor: 'var(--emergency-table-border)' }} className="border-t text-white hover:opacity-90 transition-opacity">
+                  <td className="px-6 py-4">Center for Suicide Research and Intervention (CSRI)</td>
+                  <td className="px-6 py-4">+254 703 388 130</td>
+                  <td className="px-6 py-4">Suicide and Mental Health Crises</td>
+                </tr>
+                <tr style={{ backgroundColor: 'var(--emergency-table-body)', borderTopColor: 'var(--emergency-table-border)' }} className="border-t text-white hover:opacity-90 transition-opacity">
+                  <td className="px-6 py-4">Sexual and Gender Violence Helpline</td>
+                  <td className="px-6 py-4">1195</td>
+                  <td className="px-6 py-4">Sexual and gender-based violence</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
 

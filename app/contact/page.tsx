@@ -73,8 +73,8 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-foreground mb-1">Phone</h3>
-                  <p className="text-muted-foreground">(555) 123-4567</p>
-                  <p className="text-sm text-muted-foreground">Mon-Fri, 9am-6pm EST</p>
+                  <p className="text-muted-foreground">+254 702 123 456</p>
+                  <p className="text-sm text-muted-foreground">Mon-Fri, 8am-6pm EAT</p>
                 </div>
               </div>
 
@@ -85,8 +85,8 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-foreground mb-1">Office</h3>
-                  <p className="text-muted-foreground">123 Wellness Street</p>
-                  <p className="text-muted-foreground">New York, NY 10001</p>
+                  <p className="text-muted-foreground">Nairobi, Kenya</p>
+                  <p className="text-muted-foreground">Available across Kenya</p>
                 </div>
               </div>
 
@@ -97,8 +97,8 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-foreground mb-1">Hours</h3>
-                  <p className="text-muted-foreground">Monday - Friday: 9am - 6pm</p>
-                  <p className="text-muted-foreground">Saturday - Sunday: Closed</p>
+                  <p className="text-muted-foreground">Monday - Friday: 8am - 6pm</p>
+                  <p className="text-muted-foreground">Saturday: 10am - 4pm</p>
                 </div>
               </div>
             </div>
@@ -109,21 +109,28 @@ export default function ContactPage() {
                 <h2 className="text-2xl font-bold text-foreground mb-6">Send us a Message</h2>
 
                 {submitted ? (
-                  <div className="bg-primary/10 border border-primary/20 rounded-lg p-6 text-center">
-                    <p className="text-lg font-semibold text-primary mb-2">Thank you for reaching out!</p>
-                    <p className="text-muted-foreground">We've received your message and will get back to you soon.</p>
+                  <div className="bg-green-50 border border-green-200 rounded-lg p-8 text-center" role="status" aria-live="polite">
+                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-green-100 mb-4">
+                      <svg className="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <p className="text-lg font-semibold text-green-900 mb-2">Thank you for reaching out!</p>
+                    <p className="text-green-800">We've received your message and will get back to you within 24 hours.</p>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-6">
                     {/* Name */}
                     <div>
-                      <label className="block text-sm font-semibold text-foreground mb-2">Full Name</label>
+                      <label htmlFor="name" className="block text-sm font-semibold text-foreground mb-2">Full Name</label>
                       <input
+                        id="name"
                         type="text"
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
                         required
+                        aria-required="true"
                         className="w-full px-4 py-3 border border-border rounded-lg bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
                         placeholder="Your name"
                       />
@@ -131,13 +138,15 @@ export default function ContactPage() {
 
                     {/* Email */}
                     <div>
-                      <label className="block text-sm font-semibold text-foreground mb-2">Email Address</label>
+                      <label htmlFor="email" className="block text-sm font-semibold text-foreground mb-2">Email Address</label>
                       <input
+                        id="email"
                         type="email"
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
                         required
+                        aria-required="true"
                         className="w-full px-4 py-3 border border-border rounded-lg bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
                         placeholder="your@email.com"
                       />
@@ -145,12 +154,14 @@ export default function ContactPage() {
 
                     {/* Subject */}
                     <div>
-                      <label className="block text-sm font-semibold text-foreground mb-2">Subject</label>
+                      <label htmlFor="subject" className="block text-sm font-semibold text-foreground mb-2">Subject</label>
                       <select
+                        id="subject"
                         name="subject"
                         value={formData.subject}
                         onChange={handleChange}
                         required
+                        aria-required="true"
                         className="w-full px-4 py-3 border border-border rounded-lg bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
                       >
                         <option value="">Select a subject</option>
@@ -164,12 +175,14 @@ export default function ContactPage() {
 
                     {/* Message */}
                     <div>
-                      <label className="block text-sm font-semibold text-foreground mb-2">Message</label>
+                      <label htmlFor="message" className="block text-sm font-semibold text-foreground mb-2">Message</label>
                       <textarea
+                        id="message"
                         name="message"
                         value={formData.message}
                         onChange={handleChange}
                         required
+                        aria-required="true"
                         rows={5}
                         className="w-full px-4 py-3 border border-border rounded-lg bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary resize-none"
                         placeholder="Tell us how we can help..."
@@ -179,7 +192,8 @@ export default function ContactPage() {
                     {/* Submit Button */}
                     <button
                       type="submit"
-                      className="w-full bg-primary text-primary-foreground py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
+                      className="w-full bg-primary text-primary-foreground py-3 rounded-lg font-semibold hover:opacity-90 active:opacity-75 transition-opacity flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                      aria-label="Send message to Lockeroom Wellness"
                     >
                       <Send className="w-5 h-5" />
                       Send Message

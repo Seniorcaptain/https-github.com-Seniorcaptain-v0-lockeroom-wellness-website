@@ -4,35 +4,19 @@ import { Star } from "lucide-react"
 const professionals = [
   {
     id: 1,
-    name: "Dr. Sarah Mitchell",
-    specialty: "Anxiety & Depression",
+    name: "Dr. Louise Brenda",
+    specialty: "Mental Health & Wellness",
     rating: 4.9,
     reviews: 128,
-    image: "/professional-therapist-woman.png",
+    image: null,
   },
   {
     id: 2,
-    name: "Dr. James Chen",
-    specialty: "Trauma & PTSD",
+    name: "Malusha Manase",
+    specialty: "Counseling & Support",
     rating: 4.8,
     reviews: 95,
-    image: "/professional-therapist-man.jpg",
-  },
-  {
-    id: 3,
-    name: "Dr. Maria Rodriguez",
-    specialty: "Relationship Counseling",
-    rating: 4.9,
-    reviews: 142,
-    image: "/professional-therapist-woman.png",
-  },
-  {
-    id: 4,
-    name: "Dr. Michael Thompson",
-    specialty: "Stress Management",
-    rating: 4.7,
-    reviews: 87,
-    image: "/professional-therapist-man.jpg",
+    image: null,
   },
 ]
 
@@ -53,11 +37,17 @@ export default function FeaturedProfessionals() {
               key={professional.id}
               className="bg-card border border-border rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
             >
-              <img
-                src={professional.image || "/placeholder.svg"}
-                alt={professional.name}
-                className="w-full h-48 object-cover"
-              />
+              {professional.image ? (
+                <img
+                  src={professional.image}
+                  alt={professional.name}
+                  className="w-full h-48 object-cover"
+                />
+              ) : (
+                <div className="w-full h-48 bg-secondary flex items-center justify-center">
+                  <p className="text-muted-foreground">Coming Soon</p>
+                </div>
+              )}
               <div className="p-6">
                 <h3 className="text-lg font-semibold text-foreground mb-1">{professional.name}</h3>
                 <p className="text-sm text-muted-foreground mb-4">{professional.specialty}</p>
