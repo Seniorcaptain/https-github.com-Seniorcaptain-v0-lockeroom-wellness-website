@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
-import { Star, Quote } from "lucide-react"
+import Image from "next/image"
+import { Star, Quote, User as UserIcon } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Client Testimonials",
@@ -11,7 +12,7 @@ const testimonials = [
     id: 1,
     name: "Emma Johnson",
     role: "Marketing Professional",
-    location: "New York, NY",
+    location: "Nairobi",
     content:
       "Lockeroom Wellness changed my life. I was struggling with anxiety for years, and finding Dr. Sarah was a game-changer. The platform is so user-friendly, and I finally feel heard and supported. I can't recommend this service enough.",
     rating: 5,
@@ -21,7 +22,7 @@ const testimonials = [
     id: 2,
     name: "David Lee",
     role: "Software Engineer",
-    location: "San Francisco, CA",
+    location: "Kiambu",
     content:
       "The flexibility to schedule sessions around my work has been incredible. Dr. Michael helped me manage my stress and find better work-life balance. The therapists are professional, compassionate, and truly care about their clients.",
     rating: 5,
@@ -31,7 +32,7 @@ const testimonials = [
     id: 3,
     name: "Jessica Martinez",
     role: "Teacher",
-    location: "Austin, TX",
+    location: "Nakuru",
     content:
       "I was nervous about online therapy, but Lockeroom made it so comfortable and accessible. The confidentiality and professionalism are top-notch. Dr. Maria's couples counseling saved my marriage. Thank you!",
     rating: 5,
@@ -41,7 +42,7 @@ const testimonials = [
     id: 4,
     name: "Michael Chen",
     role: "Student",
-    location: "Boston, MA",
+    location: "Mombasa",
     content:
       "As a college student, I couldn't afford traditional therapy. Lockeroom's pricing is reasonable, and the quality of care is exceptional. Dr. James helped me work through trauma I've been carrying for years.",
     rating: 5,
@@ -51,7 +52,7 @@ const testimonials = [
     id: 5,
     name: "Sarah Williams",
     role: "Entrepreneur",
-    location: "Los Angeles, CA",
+    location: "Kisumu",
     content:
       "Running a startup is stressful, and I needed support. The ability to book sessions on my schedule was perfect. Dr. Michael's coaching helped me develop better coping strategies and improve my overall wellbeing.",
     rating: 5,
@@ -61,7 +62,7 @@ const testimonials = [
     id: 6,
     name: "Robert Thompson",
     role: "Healthcare Worker",
-    location: "Chicago, IL",
+    location: "Eldoret",
     content:
       "Working in healthcare during the pandemic took a toll on my mental health. Lockeroom connected me with Dr. James, who specializes in trauma. His expertise and compassion made all the difference in my recovery.",
     rating: 5,
@@ -71,7 +72,7 @@ const testimonials = [
     id: 7,
     name: "Amanda Foster",
     role: "Parent",
-    location: "Seattle, WA",
+    location: "Thika",
     content:
       "Balancing parenthood and work was overwhelming. Dr. Maria's family therapy sessions helped us communicate better as a family. The platform made it easy to fit therapy into our busy schedule.",
     rating: 5,
@@ -81,7 +82,7 @@ const testimonials = [
     id: 8,
     name: "James Wilson",
     role: "Recovering Individual",
-    location: "Denver, CO",
+    location: "Nyeri",
     content:
       "I've been in recovery for 2 years, and Dr. David's support has been invaluable. His compassionate approach and expertise in addiction recovery gave me hope when I needed it most. Lockeroom is truly life-changing.",
     rating: 5,
@@ -115,8 +116,23 @@ export default function TestimonialsPage() {
                 key={testimonial.id}
                 className="bg-card border border-border rounded-lg p-8 hover:shadow-lg transition-shadow flex flex-col"
               >
+                {/* Avatar */}
+                {testimonial.image ? (
+                  <Image
+                    src={testimonial.image}
+                    alt={`${testimonial.name}'s profile`}
+                    width={48}
+                    height={48}
+                    className="w-12 h-12 rounded-full object-cover mb-4"
+                  />
+                ) : (
+                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                    <UserIcon className="w-6 h-6 text-primary" aria-hidden="true" />
+                  </div>
+                )}
+
                 {/* Quote Icon */}
-                <Quote className="w-8 h-8 text-primary/30 mb-4" />
+                <Quote className="w-8 h-8 text-primary/30 mb-4" aria-hidden="true" />
 
                 {/* Rating */}
                 <div className="flex items-center gap-1 mb-4">
