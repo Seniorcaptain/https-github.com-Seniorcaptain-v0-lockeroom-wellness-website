@@ -61,8 +61,14 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-foreground mb-1">Email</h3>
-                  <p className="text-muted-foreground">support@lockeroom.com</p>
-                  <p className="text-sm text-muted-foreground">We'll respond within 24 hours</p>
+                  <div className="space-y-1 text-muted-foreground">
+                    <a href="mailto:Loisebrenda@lockeroomwellness.com" className="block hover:text-primary transition-colors">Loisebrenda@lockeroomwellness.com</a>
+                    <a href="mailto:MalushaManase@lockeroomwellness.com" className="block hover:text-primary transition-colors">MalushaManase@lockeroomwellness.com</a>
+                    <a href="mailto:Sales@lockeroomwellness.com" className="block hover:text-primary transition-colors">Sales@lockeroomwellness.com</a>
+                    <a href="mailto:Billing@lockeroomwellness.com" className="block hover:text-primary transition-colors">Billing@lockeroomwellness.com</a>
+                    <a href="mailto:Lockerroomwellnes@lockeroomwellness.com" className="block hover:text-primary transition-colors">Lockerroomwellnes@lockeroomwellness.com</a>
+                  </div>
+                  <p className="text-sm text-muted-foreground">We&apos;ll respond within 24 hours</p>
                 </div>
               </div>
 
@@ -222,7 +228,7 @@ export default function ContactPage() {
               },
               {
                 q: "Is my information secure?",
-                a: "Yes, we use HIPAA-compliant encryption and security measures to protect your personal and health information.",
+                a: "We use encryption and security measures designed to protect your personal information, with handling aligned to Kenya's Data Protection Act, 2019.",
               },
               {
                 q: "Can I change my therapist?",

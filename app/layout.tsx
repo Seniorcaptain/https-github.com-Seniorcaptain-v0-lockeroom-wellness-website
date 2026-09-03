@@ -57,7 +57,7 @@ const jsonLd = {
     "Online mental health support platform connecting clients with licensed therapists, counselors, and psychiatrists in Kenya.",
   url: siteUrl,
   telephone: "+254702123456",
-  email: "support@lockeroomwellness.ke",
+  email: "Loisebrenda@lockeroomwellness.com",
   address: {
     "@type": "PostalAddress",
     addressCountry: "KE",

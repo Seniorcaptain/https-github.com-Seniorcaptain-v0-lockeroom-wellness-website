@@ -80,17 +80,12 @@ export default function Footer() {
             <h4 className="font-semibold text-foreground mb-4">Resources</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                <Link href="/privacy" className="text-muted-foreground hover:text-primary transition-colors">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                <Link href="/terms" className="text-muted-foreground hover:text-primary transition-colors">
                   Terms of Service
                 </Link>
               </li>
@@ -103,9 +98,13 @@ export default function Footer() {
             <ul className="space-y-3 text-sm">
               <li className="flex items-center gap-2 text-muted-foreground">
                 <Mail className="w-4 h-4" />
-                <a href="mailto:support@lockeroomwellness.ke" className="hover:text-primary transition-colors">
-                  support@lockeroomwellness.ke
-                </a>
+                <div className="space-y-1">
+                  <a href="mailto:Loisebrenda@lockeroomwellness.com" className="block hover:text-primary transition-colors">Loisebrenda@lockeroomwellness.com</a>
+                  <a href="mailto:MalushaManase@lockeroomwellness.com" className="block hover:text-primary transition-colors">MalushaManase@lockeroomwellness.com</a>
+                  <a href="mailto:Sales@lockeroomwellness.com" className="block hover:text-primary transition-colors">Sales@lockeroomwellness.com</a>
+                  <a href="mailto:Billing@lockeroomwellness.com" className="block hover:text-primary transition-colors">Billing@lockeroomwellness.com</a>
+                  <a href="mailto:Lockerroomwellnes@lockeroomwellness.com" className="block hover:text-primary transition-colors">Lockerroomwellnes@lockeroomwellness.com</a>
+                </div>
               </li>
               <li className="flex items-center gap-2 text-muted-foreground">
                 <Phone className="w-4 h-4" />
