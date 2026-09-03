@@ -7,7 +7,7 @@ import Link from "next/link"
 const professionals = [
   {
     id: 1,
-    name: "Dr. Louise Brenda",
+    name: "Dr. Loise Brenda",
     specialty: "Mental Health & Wellness",
     credentials: "Licensed Clinical Psychologist",
     rating: 4.9,

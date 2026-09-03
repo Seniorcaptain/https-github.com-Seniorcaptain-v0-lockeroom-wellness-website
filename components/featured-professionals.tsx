@@ -4,7 +4,7 @@ import { Star } from "lucide-react"
 const professionals = [
   {
     id: 1,
-    name: "Dr. Louise Brenda",
+    name: "Dr. Loise Brenda",
     specialty: "Mental Health & Wellness",
     rating: 4.9,
     reviews: 128,

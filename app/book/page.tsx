@@ -16,7 +16,7 @@ interface BookingData {
 const professionals = [
   {
     id: "1",
-    name: "Dr. Louise Brenda",
+    name: "Dr. Loise Brenda",
     specialty: "Mental Health & Wellness",
     rate: 120,
     image: null,
