@@ -1,5 +1,12 @@
+import type { Metadata } from "next"
 import { Brain, Heart, Users, Lightbulb, Zap, Shield } from "lucide-react"
 import Link from "next/link"
+
+export const metadata: Metadata = {
+  title: "Our Services",
+  description:
+    "Explore Lockeroom Wellness's therapy and counseling services, from individual sessions to specialized mental health support, delivered by licensed professionals.",
+}
 
 const services = [
   {

@@ -1,4 +1,11 @@
+import type { Metadata } from "next"
 import { CheckCircle, Users, Award, Zap } from "lucide-react"
+
+export const metadata: Metadata = {
+  title: "About Us",
+  description:
+    "Learn about Lockeroom Wellness's mission to make licensed mental health support accessible, affordable, and confidential for everyone in Kenya.",
+}
 
 export default function AboutPage() {
   return (
@@ -46,7 +53,7 @@ export default function AboutPage() {
                   <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="font-semibold text-foreground mb-2">Confidential</h3>
-                    <p className="text-muted-foreground">HIPAA-compliant with end-to-end encryption.</p>
+                    <p className="text-muted-foreground">Encrypted sessions, handled in line with Kenya's Data Protection Act, 2019.</p>
                   </div>
                 </div>
                 <div className="flex gap-4">

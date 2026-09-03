@@ -1,4 +1,10 @@
+import type { Metadata } from "next"
 import { Star, Quote } from "lucide-react"
+
+export const metadata: Metadata = {
+  title: "Client Testimonials",
+  description: "Real stories from clients who've found licensed mental health support through Lockeroom Wellness.",
+}
 
 const testimonials = [
   {
@@ -175,9 +181,9 @@ export default function TestimonialsPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-secondary rounded-lg p-8 text-center">
               <div className="text-4xl font-bold text-primary mb-4">100%</div>
-              <h3 className="text-lg font-semibold text-foreground mb-2">HIPAA Compliant</h3>
+              <h3 className="text-lg font-semibold text-foreground mb-2">Data Protection Compliant</h3>
               <p className="text-muted-foreground">
-                All sessions are encrypted and protected by HIPAA regulations for your privacy.
+                All sessions are encrypted and your data is handled per Kenya's Data Protection Act, 2019.
               </p>
             </div>
             <div className="bg-secondary rounded-lg p-8 text-center">
