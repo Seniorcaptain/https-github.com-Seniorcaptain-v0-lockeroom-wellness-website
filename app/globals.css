@@ -5,19 +5,19 @@
 
 :root {
   /* Updated color palette for Lockeroom Wellness - warm beige/cream with dark green accents */
-  --background: oklch(0.98 0.01 70);
-  --foreground: oklch(0.2 0.02 70);
+  --background: oklch(0.975 0.018 88);
+  --foreground: oklch(0.24 0.035 160);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.2 0.02 70);
+  --card-foreground: oklch(0.24 0.035 160);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.2 0.02 70);
-  --primary: oklch(0.35 0.12 140);
+  --popover-foreground: oklch(0.24 0.035 160);
+  --primary: oklch(0.39 0.095 160);
   --primary-foreground: oklch(0.98 0.01 70);
-  --secondary: oklch(0.95 0.02 70);
-  --secondary-foreground: oklch(0.35 0.12 140);
-  --muted: oklch(0.92 0.01 70);
-  --muted-foreground: oklch(0.5 0.02 70);
-  --accent: oklch(0.35 0.12 140);
+  --secondary: oklch(0.93 0.035 150);
+  --secondary-foreground: oklch(0.32 0.06 160);
+  --muted: oklch(0.93 0.02 88);
+  --muted-foreground: oklch(0.47 0.035 160);
+  --accent: oklch(0.72 0.12 55);
   --accent-foreground: oklch(0.98 0.01 70);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.577 0.245 27.325);
@@ -44,18 +44,18 @@
 }
 
 .dark {
-  --background: oklch(0.15 0.02 70);
-  --foreground: oklch(0.95 0.01 70);
-  --card: oklch(0.2 0.02 70);
-  --card-foreground: oklch(0.95 0.01 70);
+  --background: oklch(0.2 0.035 160);
+  --foreground: oklch(0.96 0.018 88);
+  --card: oklch(0.24 0.04 160);
+  --card-foreground: oklch(0.96 0.018 88);
   --popover: oklch(0.2 0.02 70);
   --popover-foreground: oklch(0.95 0.01 70);
-  --primary: oklch(0.55 0.15 140);
-  --primary-foreground: oklch(0.15 0.02 70);
-  --secondary: oklch(0.25 0.02 70);
-  --secondary-foreground: oklch(0.95 0.01 70);
-  --muted: oklch(0.3 0.02 70);
-  --muted-foreground: oklch(0.7 0.02 70);
+  --primary: oklch(0.68 0.11 150);
+  --primary-foreground: oklch(0.19 0.035 160);
+  --secondary: oklch(0.28 0.045 160);
+  --secondary-foreground: oklch(0.94 0.02 88);
+  --muted: oklch(0.3 0.04 160);
+  --muted-foreground: oklch(0.76 0.025 88);
   --accent: oklch(0.55 0.15 140);
   --accent-foreground: oklch(0.15 0.02 70);
   --destructive: oklch(0.396 0.141 25.723);
