@@ -3,37 +3,8 @@
 import { useState } from "react"
 import { Star, MapPin, Clock, DollarSign, Search } from "lucide-react"
 import Link from "next/link"
-
-const professionals = [
-  {
-    id: 1,
-    name: "Dr. Loise Brenda",
-    specialty: "Mental Health & Wellness",
-    credentials: "Licensed Clinical Psychologist",
-    rating: 4.9,
-    reviews: 128,
-    hourlyRate: 120,
-    availability: "Mon-Fri, 9am-6pm",
-    bio: "Dedicated to providing comprehensive mental health support with a compassionate approach and evidence-based therapeutic techniques.",
-    image: null,
-    languages: ["English"],
-    experience: "12+ years",
-  },
-  {
-    id: 2,
-    name: "Malusha Manase",
-    specialty: "Counseling & Support",
-    credentials: "Licensed Professional Counselor",
-    rating: 4.8,
-    reviews: 95,
-    hourlyRate: 110,
-    availability: "Tue-Sat, 10am-7pm",
-    bio: "Specializing in personalized counseling services to help clients achieve emotional wellness and build resilience.",
-    image: null,
-    languages: ["English"],
-    experience: "10+ years",
-  },
-]
+import Image from "next/image"
+import { professionals } from "@/lib/professionals"
 
 export default function ProfessionalsPage() {
   const [searchTerm, setSearchTerm] = useState("")
@@ -122,9 +93,11 @@ export default function ProfessionalsPage() {
               >
                 {/* Image */}
                 {professional.image && (
-                  <img
-                    src={professional.image}
+                  <Image
+                    src={professional.image || "/placeholder.svg"}
                     alt={professional.name}
+                    width={400}
+                    height={192}
                     className="w-full h-48 object-cover"
                   />
                 )}

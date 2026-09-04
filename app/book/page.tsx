@@ -2,6 +2,8 @@
 
 import { useState } from "react"
 import { ChevronRight, Calendar, Clock, User, DollarSign } from "lucide-react"
+import Image from "next/image"
+import { professionals as allProfessionals } from "@/lib/professionals"
 
 type BookingStep = "professional" | "date" | "time" | "details" | "confirmation"
 
@@ -13,22 +15,13 @@ interface BookingData {
   notes: string
 }
 
-const professionals = [
-  {
-    id: "1",
-    name: "Dr. Loise Brenda",
-    specialty: "Mental Health & Wellness",
-    rate: 120,
-    image: null,
-  },
-  {
-    id: "2",
-    name: "Malusha Manase",
-    specialty: "Counseling & Support",
-    rate: 110,
-    image: null,
-  },
-]
+const professionals = allProfessionals.map((p) => ({
+  id: String(p.id),
+  name: p.name,
+  specialty: p.specialty,
+  rate: p.hourlyRate,
+  image: p.image,
+}))
 
 const sessionTypes = [
   { id: "initial", label: "Initial Consultation", duration: "60 minutes" },
@@ -137,9 +130,11 @@ export default function BookPage() {
                   >
                     <div className="flex gap-3 items-start">
                       {professional.image ? (
-                        <img
-                          src={professional.image}
+                        <Image
+                          src={professional.image || "/placeholder.svg"}
                           alt={professional.name}
+                          width={64}
+                          height={64}
                           className="w-16 h-16 rounded-lg object-cover"
                         />
                       ) : (

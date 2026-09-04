@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { Star, User as UserIcon } from "lucide-react"
 
 const testimonials = [
@@ -79,9 +80,11 @@ export default function TestimonialsSection() {
               <p className="text-foreground mb-6 leading-relaxed italic flex-1">"{testimonial.content}"</p>
               <div className="flex items-center gap-3">
                 {testimonial.avatar ? (
-                  <img
-                    src={testimonial.avatar}
+                  <Image
+                    src={testimonial.avatar || "/placeholder.svg"}
                     alt={testimonial.name}
+                    width={40}
+                    height={40}
                     className="w-10 h-10 rounded-full object-cover"
                   />
                 ) : (
