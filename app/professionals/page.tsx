@@ -1,39 +1,10 @@
 "use client"
 
 import { useState } from "react"
-import { Star, MapPin, Clock, DollarSign, Search } from "lucide-react"
+import { Star, MapPin, Clock, Search } from "lucide-react"
 import Link from "next/link"
-
-const professionals = [
-  {
-    id: 1,
-    name: "Dr. Louise Brenda",
-    specialty: "Mental Health & Wellness",
-    credentials: "Licensed Clinical Psychologist",
-    rating: 4.9,
-    reviews: 128,
-    hourlyRate: 120,
-    availability: "Mon-Fri, 9am-6pm",
-    bio: "Dedicated to providing comprehensive mental health support with a compassionate approach and evidence-based therapeutic techniques.",
-    image: null,
-    languages: ["English"],
-    experience: "12+ years",
-  },
-  {
-    id: 2,
-    name: "Malusha Manase",
-    specialty: "Counseling & Support",
-    credentials: "Licensed Professional Counselor",
-    rating: 4.8,
-    reviews: 95,
-    hourlyRate: 110,
-    availability: "Tue-Sat, 10am-7pm",
-    bio: "Specializing in personalized counseling services to help clients achieve emotional wellness and build resilience.",
-    image: null,
-    languages: ["English"],
-    experience: "10+ years",
-  },
-]
+import Image from "next/image"
+import { professionals } from "@/lib/professionals"
 
 export default function ProfessionalsPage() {
   const [searchTerm, setSearchTerm] = useState("")
@@ -59,7 +30,7 @@ export default function ProfessionalsPage() {
               Find Your Perfect Therapist
             </h1>
             <p className="text-lg text-muted-foreground text-balance">
-              Browse our network of 500+ licensed mental health professionals ready to support you.
+              Meet our trusted professionals, Dr. Loise Brenda and Malusha Manase, ready to support you.
             </p>
           </div>
 
@@ -122,9 +93,11 @@ export default function ProfessionalsPage() {
               >
                 {/* Image */}
                 {professional.image && (
-                  <img
-                    src={professional.image}
+                  <Image
+                    src={professional.image || "/placeholder.svg"}
                     alt={professional.name}
+                    width={400}
+                    height={192}
                     className="w-full h-48 object-cover"
                   />
                 )}
@@ -156,10 +129,6 @@ export default function ProfessionalsPage() {
 
                   {/* Details */}
                   <div className="space-y-2 mb-6 text-sm text-muted-foreground">
-                    <div className="flex items-center gap-2">
-                      <DollarSign className="w-4 h-4" />
-                      <span>${professional.hourlyRate}/hour</span>
-                    </div>
                     <div className="flex items-center gap-2">
                       <Clock className="w-4 h-4" />
                       <span>{professional.availability}</span>

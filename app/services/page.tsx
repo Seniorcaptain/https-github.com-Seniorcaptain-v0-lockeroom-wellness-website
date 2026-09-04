@@ -1,44 +1,102 @@
+import type { Metadata } from "next"
 import { Brain, Heart, Users, Lightbulb, Zap, Shield } from "lucide-react"
 import Link from "next/link"
+
+export const metadata: Metadata = {
+  title: "Our Services",
+  description:
+    "Explore Lockeroom Wellness's therapy and counseling services, from individual sessions to specialized mental health support, delivered by licensed professionals.",
+}
 
 const services = [
   {
     icon: Brain,
     title: "Individual Therapy",
     description:
-      "One-on-one sessions with licensed therapists to address anxiety, depression, trauma, and other mental health concerns.",
-    features: ["Personalized treatment plans", "Flexible scheduling", "Multiple therapy modalities"],
+      "For anxiety, depression, burnout, trauma, and the everyday overwhelm of hustle-culture life in Kenya's cities and towns.",
+    features: [
+      "Sessions in English, Kiswahili, or Sheng — whichever you're most comfortable in",
+      "Support for job stress, financial anxiety, and \"hustle burnout\"",
+      "Trauma-informed care, including for crime, accidents, and past abuse",
+    ],
   },
   {
     icon: Heart,
-    title: "Couples Counseling",
+    title: "Couples Counselling",
     description:
-      "Professional guidance for couples looking to strengthen their relationship and improve communication.",
-    features: ["Relationship assessment", "Communication coaching", "Conflict resolution"],
+      "For couples navigating communication breakdowns, trust issues, financial disagreements, or pressure from extended family involvement in the relationship.",
+    features: [
+      "Pre-marital counselling (\"kabla ya ndoa\")",
+      "Conflict resolution around finances, in-laws, and parenting",
+      "Support through infidelity, separation, or reconciliation",
+    ],
   },
   {
     icon: Users,
     title: "Family Therapy",
-    description: "Support for families navigating challenges and working toward healthier dynamics.",
-    features: ["Family assessments", "Parenting support", "Intergenerational healing"],
+    description:
+      "For families working through generational conflict, blended-family dynamics, or the tension between traditional expectations and modern life.",
+    features: [
+      "Parent–teen communication, especially around independence and social media",
+      "Extended-family and in-law mediation support",
+      "Support for families affected by a member's mental illness or substance use",
+    ],
   },
   {
     icon: Lightbulb,
     title: "Coaching & Wellness",
-    description: "Goal-oriented sessions focused on personal growth, career development, and life transitions.",
-    features: ["Life coaching", "Career counseling", "Wellness planning"],
+    description:
+      "Goal-oriented sessions for career transitions, side-hustle burnout, and life direction — especially for young professionals and students.",
+    features: [
+      "Career clarity for the \"what am I even doing with my life\" season",
+      "Study and exam-pressure coping strategies for students",
+      "Building healthy routines around work, sleep, and finances",
+    ],
   },
   {
     icon: Zap,
     title: "Crisis Support",
-    description: "Immediate support for individuals experiencing acute mental health crises or emergencies.",
-    features: ["24/7 availability", "Rapid response", "Safety planning"],
+    description:
+      "Same-day support for acute distress, panic, or suicidal thoughts — with a clear, fast path to emergency services when needed.",
+    features: [
+      "Same-day booking where available",
+      "Safety planning you can actually use at home",
+      "Direct referral to emergency numbers when a situation needs more than a session can offer",
+    ],
   },
   {
     icon: Shield,
-    title: "Specialized Treatment",
-    description: "Targeted therapy for specific conditions including PTSD, OCD, eating disorders, and addiction.",
-    features: ["Evidence-based treatments", "Specialized expertise", "Comprehensive care"],
+    title: "Specialised Treatment",
+    description:
+      "Focused care for PTSD, OCD, eating disorders, and substance use disorders — including alcohol and bhang dependency, which NACADA has flagged as major risk factors for depression in Kenya.",
+    features: [
+      "Evidence-based treatment plans",
+      "Coordination with NACADA-affiliated recovery programs where appropriate",
+      "Non-judgmental care for people worried about stigma around addiction",
+    ],
+  },
+]
+
+const howItWorks = [
+  {
+    step: "1",
+    title: "Answer a Few Questions",
+    description: "Tell us what's going on, in confidence. No forms in confusing medical jargon.",
+  },
+  {
+    step: "2",
+    title: "Get Matched",
+    description: "We recommend therapists based on your needs, language preference, and budget.",
+  },
+  {
+    step: "3",
+    title: "Book & Pay via M-Pesa",
+    description: "Choose a time that works and confirm your slot securely.",
+  },
+  {
+    step: "4",
+    title: "Show Up As You Are",
+    description: "Online or in person. No pretending required.",
   },
 ]
 
@@ -75,9 +133,9 @@ export default function ServicesPage() {
                   <p className="text-muted-foreground mb-6 leading-relaxed">{service.description}</p>
                   <ul className="space-y-2">
                     {service.features.map((feature, i) => (
-                      <li key={i} className="flex items-center gap-2 text-sm text-muted-foreground">
-                        <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
-                        {feature}
+                      <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
+                        <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                        <span>{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -99,35 +157,16 @@ export default function ServicesPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {[
-              {
-                step: "1",
-                title: "Sign Up",
-                description: "Create your account and complete a brief assessment.",
-              },
-              {
-                step: "2",
-                title: "Browse Professionals",
-                description: "Explore our network of licensed therapists and counselors.",
-              },
-              {
-                step: "3",
-                title: "Book a Session",
-                description: "Schedule your first session at a time that works for you.",
-              },
-              {
-                step: "4",
-                title: "Start Healing",
-                description: "Connect with your therapist and begin your wellness journey.",
-              },
-            ].map((item, index) => (
+            {howItWorks.map((item, index) => (
               <div key={index} className="relative">
                 <div className="bg-primary text-primary-foreground w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg mb-4">
                   {item.step}
                 </div>
                 <h3 className="text-lg font-semibold text-foreground mb-2">{item.title}</h3>
                 <p className="text-muted-foreground">{item.description}</p>
-                {index < 3 && <div className="hidden md:block absolute top-6 left-full w-8 h-0.5 bg-border"></div>}
+                {index < howItWorks.length - 1 && (
+                  <div className="hidden md:block absolute top-6 left-full w-8 h-0.5 bg-border"></div>
+                )}
               </div>
             ))}
           </div>

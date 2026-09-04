@@ -113,7 +113,7 @@ export function PricingCalculator() {
 
   const whatsappLink =
     "https://wa.me/254718123456?text=Hi%20Lockeroom%20Wellness,%20I%20would%20like%20to%20inquire%20about%20corporate%20rates."
-  const emailLink = "mailto:corporate@lockeroomwellness.com?subject=Corporate%20Rates%20Inquiry"
+  const emailLink = "mailto:Sales@lockeroomwellness.com?subject=Corporate%20Rates%20Inquiry"
 
   const hasSelectedItems = Object.keys(selectedItems).length > 0
 
@@ -316,7 +316,7 @@ export function PricingCalculator() {
                   <p className="text-sm text-muted-foreground mt-2">inclusive of all selected items</p>
                 </div>
                 <Link
-                  href="/book"
+                  href={`/book?selection=${encodeURIComponent(JSON.stringify({ items: selectedItems, total: calculateTotal() }))}`}
                   className="bg-primary text-primary-foreground px-8 py-4 rounded-lg font-semibold hover:opacity-90 transition-opacity whitespace-nowrap"
                 >
                   Proceed to Booking

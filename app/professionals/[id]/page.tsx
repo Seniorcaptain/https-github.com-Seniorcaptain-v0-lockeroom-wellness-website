@@ -1,189 +1,24 @@
-import { Star, Clock, DollarSign, Calendar, MessageSquare } from "lucide-react"
+import type { Metadata } from "next"
+import { Star, Clock, Calendar, MessageSquare } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
+import { getProfessionalById } from "@/lib/professionals"
 
-// Mock data - in a real app, this would come from a database
-const professionals: Record<
-  string,
-  {
-    id: number
-    name: string
-    specialty: string
-    credentials: string
-    rating: number
-    reviews: number
-    hourlyRate: number
-    availability: string
-    bio: string
-    image: string
-    languages: string[]
-    experience: string
-    about: string
-    approach: string
-    specializations: string[]
-    education: string[]
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params
+  const professional = getProfessionalById(id)
+  if (!professional) {
+    return { title: "Professional Not Found" }
   }
-> = {
-  "1": {
-    id: 1,
-    name: "Dr. Sarah Mitchell",
-    specialty: "Anxiety & Depression",
-    credentials: "PhD, Licensed Clinical Psychologist",
-    rating: 4.9,
-    reviews: 128,
-    hourlyRate: 120,
-    availability: "Mon-Fri, 9am-6pm",
-    bio: "Specializing in cognitive behavioral therapy for anxiety and depression with 12+ years of experience.",
-    image: "/professional-therapist-woman.png",
-    languages: ["English", "Spanish"],
-    experience: "12+ years",
-    about:
-      "Dr. Sarah Mitchell is a compassionate and experienced clinical psychologist dedicated to helping individuals overcome anxiety and depression. With over 12 years of practice, she has helped hundreds of clients achieve lasting change through evidence-based therapeutic approaches.",
-    approach:
-      "I use a combination of Cognitive Behavioral Therapy (CBT), mindfulness-based interventions, and acceptance and commitment therapy (ACT) tailored to each client's unique needs. My goal is to empower you with practical tools and strategies for managing anxiety and building resilience.",
-    specializations: ["Generalized Anxiety Disorder", "Social Anxiety", "Depression", "Panic Disorder", "OCD"],
-    education: [
-      "PhD in Clinical Psychology - University of California",
-      "MA in Psychology - Stanford University",
-      "BA in Psychology - UC Berkeley",
-    ],
-  },
-  "2": {
-    id: 2,
-    name: "Dr. James Chen",
-    specialty: "Trauma & PTSD",
-    credentials: "MD, Board-Certified Psychiatrist",
-    rating: 4.8,
-    reviews: 95,
-    hourlyRate: 150,
-    availability: "Tue-Sat, 10am-7pm",
-    bio: "Expert in trauma-focused therapy and PTSD treatment using evidence-based approaches.",
-    image: "/professional-therapist-man.jpg",
-    languages: ["English", "Mandarin"],
-    experience: "15+ years",
-    about:
-      "Dr. James Chen is a board-certified psychiatrist with extensive experience in trauma treatment and PTSD recovery. He specializes in evidence-based approaches including EMDR and trauma-focused CBT.",
-    approach:
-      "I believe in creating a safe, supportive environment where healing can occur. My approach combines pharmacological interventions when appropriate with psychotherapy to address both the symptoms and root causes of trauma.",
-    specializations: ["PTSD", "Complex Trauma", "Childhood Trauma", "Combat-Related PTSD", "Grief & Loss"],
-    education: [
-      "MD - Harvard Medical School",
-      "Residency in Psychiatry - Massachusetts General Hospital",
-      "Fellowship in Trauma - National Center for PTSD",
-    ],
-  },
-  "3": {
-    id: 3,
-    name: "Dr. Maria Rodriguez",
-    specialty: "Relationship Counseling",
-    credentials: "LMFT, Licensed Marriage & Family Therapist",
-    rating: 4.9,
-    reviews: 142,
-    hourlyRate: 130,
-    availability: "Mon-Thu, 2pm-8pm",
-    bio: "Helping couples and families improve communication and build stronger relationships.",
-    image: "/professional-therapist-woman.png",
-    languages: ["English", "Spanish", "Portuguese"],
-    experience: "10+ years",
-    about:
-      "Dr. Maria Rodriguez is a licensed marriage and family therapist with a passion for helping couples and families navigate challenges and build healthier relationships. Her warm, non-judgmental approach creates a safe space for honest communication.",
-    approach:
-      "I use evidence-based couples therapy techniques including the Gottman Method and Emotionally Focused Therapy (EFT). I help couples improve communication, resolve conflicts, and rebuild intimacy and connection.",
-    specializations: [
-      "Couples Therapy",
-      "Marriage Counseling",
-      "Family Therapy",
-      "Premarital Counseling",
-      "Infidelity",
-    ],
-    education: [
-      "MA in Marriage and Family Therapy - University of Texas",
-      "BA in Psychology - University of Mexico",
-      "Certified Gottman Therapist",
-    ],
-  },
-  "4": {
-    id: 4,
-    name: "Dr. Michael Thompson",
-    specialty: "Stress Management",
-    credentials: "MA, Licensed Professional Counselor",
-    rating: 4.7,
-    reviews: 87,
-    hourlyRate: 110,
-    availability: "Wed-Sun, 11am-7pm",
-    bio: "Specializing in stress reduction, mindfulness, and work-life balance coaching.",
-    image: "/professional-therapist-man.jpg",
-    languages: ["English"],
-    experience: "8+ years",
-    about:
-      "Dr. Michael Thompson specializes in helping professionals manage stress and achieve better work-life balance. His practical, goal-oriented approach has helped countless clients reduce burnout and improve overall wellbeing.",
-    approach:
-      "I combine stress management techniques, mindfulness practices, and lifestyle coaching to help you build sustainable habits for better mental health. We'll work together to identify stressors and develop personalized coping strategies.",
-    specializations: ["Work Stress", "Burnout", "Mindfulness", "Work-Life Balance", "Executive Coaching"],
-    education: [
-      "MA in Counseling - University of Colorado",
-      "BA in Psychology - University of Washington",
-      "Certified Mindfulness Instructor",
-    ],
-  },
-  "5": {
-    id: 5,
-    name: "Dr. Emily Watson",
-    specialty: "Eating Disorders",
-    credentials: "PhD, Registered Dietitian Psychologist",
-    rating: 4.9,
-    reviews: 110,
-    hourlyRate: 140,
-    availability: "Mon-Fri, 8am-5pm",
-    bio: "Comprehensive treatment for eating disorders combining therapy and nutritional counseling.",
-    image: "/professional-therapist-woman.png",
-    languages: ["English"],
-    experience: "11+ years",
-    about:
-      "Dr. Emily Watson is a registered dietitian and clinical psychologist specializing in eating disorders. She provides comprehensive, integrated treatment that addresses both the psychological and nutritional aspects of recovery.",
-    approach:
-      "I use evidence-based treatments including Cognitive Behavioral Therapy for Eating Disorders (CBT-E) and Dialectical Behavior Therapy (DBT). My integrated approach combines psychological therapy with nutritional counseling for holistic recovery.",
-    specializations: ["Anorexia Nervosa", "Bulimia Nervosa", "Binge Eating Disorder", "Orthorexia", "Body Image"],
-    education: [
-      "PhD in Clinical Psychology - University of Pennsylvania",
-      "MS in Nutrition - Cornell University",
-      "Registered Dietitian Nutritionist (RDN)",
-    ],
-  },
-  "6": {
-    id: 6,
-    name: "Dr. David Park",
-    specialty: "Addiction & Recovery",
-    credentials: "LCSW, Certified Addiction Specialist",
-    rating: 4.8,
-    reviews: 103,
-    hourlyRate: 125,
-    availability: "Tue-Sat, 9am-6pm",
-    bio: "Specialized treatment for substance abuse and addiction recovery with compassionate care.",
-    image: "/professional-therapist-man.jpg",
-    languages: ["English", "Korean"],
-    experience: "13+ years",
-    about:
-      "Dr. David Park is a licensed clinical social worker and certified addiction specialist with 13+ years of experience in substance abuse treatment and recovery. He brings compassion, expertise, and hope to the recovery journey.",
-    approach:
-      "I believe recovery is possible for everyone. I use evidence-based treatments including motivational interviewing, cognitive behavioral therapy, and 12-step facilitation. I also help clients build strong support networks and develop relapse prevention strategies.",
-    specializations: [
-      "Alcohol Addiction",
-      "Drug Addiction",
-      "Opioid Addiction",
-      "Relapse Prevention",
-      "Family Support",
-    ],
-    education: [
-      "MSW - University of Southern California",
-      "BA in Social Work - UCLA",
-      "Certified Addiction Counselor (CAC)",
-      "Certified Addiction Specialist (CAS)",
-    ],
-  },
+  return {
+    title: professional.name,
+    description: `${professional.name}, ${professional.credentials} — specializing in ${professional.specialty}. ${professional.bio}`,
+  }
 }
 
-export default function ProfessionalDetailPage({ params }: { params: { id: string } }) {
-  const professional = professionals[params.id]
+export default async function ProfessionalDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params
+  const professional = getProfessionalById(id)
 
   if (!professional) {
     return (
@@ -210,9 +45,11 @@ export default function ProfessionalDetailPage({ params }: { params: { id: strin
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Image */}
             <div>
-              <img
+              <Image
                 src={professional.image || "/placeholder.svg"}
                 alt={professional.name}
+                width={400}
+                height={400}
                 className="w-full rounded-lg mb-6"
               />
             </div>
@@ -238,14 +75,7 @@ export default function ProfessionalDetailPage({ params }: { params: { id: strin
               </div>
 
               {/* Quick Info */}
-              <div className="grid grid-cols-2 gap-4 mb-8">
-                <div className="bg-secondary rounded-lg p-4">
-                  <div className="flex items-center gap-2 text-muted-foreground mb-1">
-                    <DollarSign className="w-4 h-4" />
-                    <span className="text-sm">Hourly Rate</span>
-                  </div>
-                  <p className="text-2xl font-bold text-foreground">${professional.hourlyRate}</p>
-                </div>
+              <div className="grid grid-cols-1 gap-4 mb-8">
                 <div className="bg-secondary rounded-lg p-4">
                   <div className="flex items-center gap-2 text-muted-foreground mb-1">
                     <Clock className="w-4 h-4" />
@@ -347,7 +177,7 @@ export default function ProfessionalDetailPage({ params }: { params: { id: strin
 
                   {/* CTA */}
                   <Link
-                    href="/book"
+href={`/book?professional=${professional.id}`}
                     className="w-full bg-primary text-primary-foreground py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity text-center block"
                   >
                     Book Now

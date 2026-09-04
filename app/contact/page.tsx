@@ -13,21 +13,40 @@ export default function ContactPage() {
     message: "",
   })
   const [submitted, setSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // In a real app, this would send to a backend
-    console.log("Form submitted:", formData)
-    setSubmitted(true)
-    setTimeout(() => {
+    setError(null)
+    setIsSubmitting(true)
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to send your message.")
+      }
+
+      setSubmitted(true)
       setFormData({ name: "", email: "", subject: "", message: "" })
-      setSubmitted(false)
-    }, 3000)
+      setTimeout(() => setSubmitted(false), 5000)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -61,7 +80,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-foreground mb-1">Email</h3>
-                  <p className="text-muted-foreground">support@lockeroom.com</p>
+                  <p className="text-muted-foreground">support@lockeroomwellness.ke</p>
                   <p className="text-sm text-muted-foreground">We'll respond within 24 hours</p>
                 </div>
               </div>
@@ -189,14 +208,21 @@ export default function ContactPage() {
                       />
                     </div>
 
+                    {error && (
+                      <p role="alert" className="text-sm text-destructive">
+                        {error}
+                      </p>
+                    )}
+
                     {/* Submit Button */}
                     <button
                       type="submit"
+                      disabled={isSubmitting}
                       className="w-full bg-primary text-primary-foreground py-3 rounded-lg font-semibold hover:opacity-90 active:opacity-75 transition-opacity flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                       aria-label="Send message to Lockeroom Wellness"
                     >
                       <Send className="w-5 h-5" />
-                      Send Message
+                      {isSubmitting ? "Sending..." : "Send Message"}
                     </button>
                   </form>
                 )}
@@ -222,7 +248,7 @@ export default function ContactPage() {
               },
               {
                 q: "Is my information secure?",
-                a: "Yes, we use HIPAA-compliant encryption and security measures to protect your personal and health information.",
+                a: "Yes. We use industry-standard encryption and security measures, and handle your personal and health information in compliance with Kenya's Data Protection Act, 2019, as registered with the Office of the Data Protection Commissioner.",
               },
               {
                 q: "Can I change my therapist?",
@@ -233,12 +259,28 @@ export default function ContactPage() {
                 a: "You can cancel or reschedule sessions up to 24 hours before your appointment without penalty.",
               },
               {
-                q: "Do you accept insurance?",
-                a: "We work with many insurance providers. Contact our support team to verify your coverage.",
+                q: "Can I pay with M-Pesa?",
+                a: "Yes. All sessions can be paid via M-Pesa. You'll get a confirmation instantly — no waiting on bank transfers.",
+              },
+              {
+                q: "Will my employer or family find out I'm seeing a therapist?",
+                a: "No. Sessions are confidential and protected under the Kenya Data Protection Act, 2019. Nothing is shared without your written consent, except where Kenyan law requires disclosure to prevent serious harm.",
+              },
+              {
+                q: "Is online therapy really as effective as face-to-face?",
+                a: "For many concerns — anxiety, stress, relationship issues, mild-to-moderate depression — yes. For crises or conditions needing in-person clinical assessment, we'll guide you to the right level of care, including in-person referral when needed.",
+              },
+              {
+                q: "What if I can't afford ongoing sessions?",
+                a: "Ask about sliding-scale pricing, or see our Emergency & Free Resources page for low-cost and free options in Nairobi, Mombasa, Kisumu, Eldoret, and Nakuru.",
+              },
+              {
+                q: "Do you have therapists who speak Kiswahili or Sheng?",
+                a: "Yes — you can filter by language when browsing professionals.",
               },
               {
                 q: "Is there a crisis line?",
-                a: "Yes, we offer 24/7 crisis support. If you're in immediate danger, please call 911 or the National Suicide Prevention Lifeline at 988.",
+                a: "Yes. If you're in immediate danger, call 999 or Kenya Red Cross's 24/7 crisis line at 1199. For non-emergency support, our chatbot and Emergency Resources page list additional hotlines.",
               },
             ].map((item, index) => (
               <details key={index} className="bg-card border border-border rounded-lg p-6 cursor-pointer group">

@@ -1,7 +1,7 @@
 import HeroSection from "@/components/hero-section"
 import ServicesOverview from "@/components/services-overview"
-import FeaturedProfessionals from "@/components/featured-professionals"
-import TestimonialsSection from "@/components/testimonials-section"
+import StrugglesSection from "@/components/struggles-section"
+import FirstSessionSection from "@/components/first-session-section"
 import CTASection from "@/components/cta-section"
 
 export default function Home() {
@@ -9,8 +9,8 @@ export default function Home() {
     <main>
       <HeroSection />
       <ServicesOverview />
-      <FeaturedProfessionals />
-      <TestimonialsSection />
+      <StrugglesSection />
+      <FirstSessionSection />
       <CTASection />
     </main>
   )

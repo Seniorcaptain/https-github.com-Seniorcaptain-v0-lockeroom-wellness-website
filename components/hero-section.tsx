@@ -1,146 +1,74 @@
+import Image from "next/image"
 import Link from "next/link"
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-background via-background to-secondary">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <section className="relative flex min-h-[calc(100vh-4rem)] items-center overflow-hidden bg-background">
+      <div className="mx-auto w-full max-w-7xl px-6 py-16 sm:px-8 lg:min-h-[calc(100vh-4rem)] lg:px-0 lg:py-0">
+        <div className="grid min-h-full grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-0">
           {/* Left Content */}
-          <div className="flex flex-col justify-center space-y-8">
-            <div className="space-y-4">
-              <h1 className="text-5xl md:text-6xl font-bold text-foreground leading-tight text-balance">
-                Mental Wellness for Everyone
+          <div className="flex flex-col justify-center gap-8 lg:pr-12">
+            <div className="flex flex-col gap-4">
+              <p className="font-serif text-sm uppercase tracking-[0.2em] text-primary">Lockeroom Wellness</p>
+              <h1 className="font-serif text-5xl font-normal leading-[0.95] tracking-tight text-foreground text-balance md:text-7xl lg:text-8xl">
+                Discover
+                <br />
+                Inner Peace
               </h1>
-              <p className="text-xl text-muted-foreground leading-relaxed text-balance">
-                Connect with licensed mental health professionals in a confidential, accessible platform designed to
-                support your journey toward better mental health.
+              <p className="font-serif text-2xl leading-tight text-foreground/80 text-balance md:text-3xl">
+                Embrace Healing Today
+              </p>
+              <p className="max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
+                Meet with trusted professionals, including Loise Brenda, in a private and compassionate space created for your wellbeing.
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col gap-4 sm:flex-row">
               <Link
                 href="/book"
-                className="bg-primary text-primary-foreground px-8 py-4 rounded-full font-semibold hover:opacity-90 transition-opacity text-center"
+                className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-4 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
               >
-                Start Your Journey
+                Get Started
               </Link>
               <Link
                 href="/about"
-                className="border-2 border-primary text-primary px-8 py-4 rounded-full font-semibold hover:bg-primary hover:text-primary-foreground transition-colors text-center"
+                className="inline-flex items-center justify-center rounded-md border border-primary px-8 py-4 text-sm font-semibold text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
               >
-                Learn More
+                Meet Loise Brenda
               </Link>
             </div>
+          </div>
 
-            {/* Trust Indicators */}
-            <div className="grid grid-cols-3 gap-4 pt-8">
-              <div className="space-y-1">
-                <div className="text-2xl font-bold text-primary">500+</div>
-                <p className="text-sm text-muted-foreground">Licensed Professionals</p>
-              </div>
-              <div className="space-y-1">
-                <div className="text-2xl font-bold text-primary">10K+</div>
-                <p className="text-sm text-muted-foreground">Active Users</p>
-              </div>
-              <div className="space-y-1">
-                <div className="text-2xl font-bold text-primary">4.9★</div>
-                <p className="text-sm text-muted-foreground">Average Rating</p>
+          {/* Right Visual */}
+          <div className="hidden min-h-[calc(100vh-4rem)] lg:block">
+            <div className="relative h-full min-h-[calc(100vh-4rem)] overflow-hidden bg-secondary">
+              <Image
+                src="/loise-brenda-hero.jpeg"
+                alt="Loise Brenda seated outdoors in a peaceful wellness setting"
+                fill
+                sizes="50vw"
+                className="object-cover object-center"
+                priority
+              />
+              <div className="absolute inset-x-8 bottom-8 rounded-md bg-background/95 p-5 shadow-lg backdrop-blur-sm">
+                <p className="font-serif text-xl text-foreground">A calmer space starts here.</p>
+                <p className="mt-1 text-sm leading-relaxed text-muted-foreground">Private, compassionate care from professionals who understand.</p>
               </div>
             </div>
           </div>
 
-          {/* Right Visual - Botanical Element */}
-          <div className="hidden lg:flex justify-center items-center relative h-96">
-            <div className="relative w-full h-full flex items-center justify-center">
-              {/* Decorative botanical background */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-64 h-64 bg-gradient-to-br from-primary/10 to-primary/5 rounded-full blur-3xl"></div>
-              </div>
-
-              {/* Plant illustration using SVG */}
-              <svg
-                viewBox="0 0 300 400"
-                className="w-full h-full max-w-sm relative z-10"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                {/* Stem */}
-                <path
-                  d="M 150 400 Q 145 350 140 300 Q 135 250 140 200 Q 145 150 150 100"
-                  stroke="oklch(0.4 0.08 100)"
-                  strokeWidth="3"
-                  fill="none"
-                  strokeLinecap="round"
-                />
-
-                {/* Left leaves */}
-                <ellipse
-                  cx="100"
-                  cy="280"
-                  rx="35"
-                  ry="55"
-                  fill="oklch(0.35 0.12 140)"
-                  opacity="0.9"
-                  transform="rotate(-35 100 280)"
-                />
-                <ellipse
-                  cx="80"
-                  cy="200"
-                  rx="30"
-                  ry="50"
-                  fill="oklch(0.35 0.12 140)"
-                  opacity="0.85"
-                  transform="rotate(-40 80 200)"
-                />
-                <ellipse
-                  cx="95"
-                  cy="120"
-                  rx="28"
-                  ry="48"
-                  fill="oklch(0.35 0.12 140)"
-                  opacity="0.8"
-                  transform="rotate(-30 95 120)"
-                />
-
-                {/* Right leaves */}
-                <ellipse
-                  cx="200"
-                  cy="260"
-                  rx="35"
-                  ry="55"
-                  fill="oklch(0.35 0.12 140)"
-                  opacity="0.95"
-                  transform="rotate(35 200 260)"
-                />
-                <ellipse
-                  cx="220"
-                  cy="180"
-                  rx="30"
-                  ry="50"
-                  fill="oklch(0.35 0.12 140)"
-                  opacity="0.9"
-                  transform="rotate(40 220 180)"
-                />
-                <ellipse
-                  cx="205"
-                  cy="100"
-                  rx="28"
-                  ry="48"
-                  fill="oklch(0.35 0.12 140)"
-                  opacity="0.85"
-                  transform="rotate(30 205 100)"
-                />
-
-                {/* Top leaf */}
-                <ellipse
-                  cx="150"
-                  cy="50"
-                  rx="25"
-                  ry="45"
-                  fill="oklch(0.35 0.12 140)"
-                  opacity="0.9"
-                  transform="rotate(0 150 50)"
-                />
-              </svg>
+          <div className="relative min-h-[24rem] overflow-hidden bg-secondary lg:hidden">
+            <Image
+              src="/loise-brenda-hero.jpeg"
+              alt="Loise Brenda seated outdoors in a peaceful wellness setting"
+              fill
+              sizes="100vw"
+              className="object-cover object-center"
+              priority
+            />
+            <div className="absolute inset-x-5 bottom-5 rounded-md bg-background/95 p-4 shadow-lg backdrop-blur-sm">
+              <p className="font-serif text-lg text-foreground">A calmer space starts here.</p>
+              <p className="mt-1 text-sm leading-relaxed text-muted-foreground">Private, compassionate care for your wellbeing.</p>
             </div>
           </div>
         </div>

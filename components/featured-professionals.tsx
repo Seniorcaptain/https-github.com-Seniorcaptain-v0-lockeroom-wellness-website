@@ -1,24 +1,9 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Star } from "lucide-react"
+import { professionals as allProfessionals } from "@/lib/professionals"
 
-const professionals = [
-  {
-    id: 1,
-    name: "Dr. Louise Brenda",
-    specialty: "Mental Health & Wellness",
-    rating: 4.9,
-    reviews: 128,
-    image: null,
-  },
-  {
-    id: 2,
-    name: "Malusha Manase",
-    specialty: "Counseling & Support",
-    rating: 4.8,
-    reviews: 95,
-    image: null,
-  },
-]
+const professionals = allProfessionals.slice(0, 4)
 
 export default function FeaturedProfessionals() {
   return (
@@ -38,9 +23,11 @@ export default function FeaturedProfessionals() {
               className="bg-card border border-border rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
             >
               {professional.image ? (
-                <img
-                  src={professional.image}
+                <Image
+                  src={professional.image || "/placeholder.svg"}
                   alt={professional.name}
+                  width={400}
+                  height={192}
                   className="w-full h-48 object-cover"
                 />
               ) : (

@@ -83,7 +83,7 @@ export default function Chatbot() {
 
     // Contact/support
     if (lowerMessage.includes("contact") || lowerMessage.includes("email") || lowerMessage.includes("phone")) {
-      return "You can reach us at:\n\n• Email: support@lockeroom.com\n• Phone: (123) 456-7890\n• WhatsApp: Available for quick inquiries\n\nOur support team is here to help! Would you like to visit our Contact page to send us a message?"
+      return "You can reach us at:\n\n• General: Loisebrenda@lockeroomwellness.com\n• Operations: MalushaManase@lockeroomwellness.com\n• Sales: Sales@lockeroomwellness.com\n• Billing: Billing@lockeroomwellness.com\n• Support: Lockerroomwellnes@lockeroomwellness.com\n• Phone: +254 702 123 456\n• WhatsApp: Available for quick inquiries\n\nOur support team is here to help! Would you like to visit our Contact page to send us a message?"
     }
 
     // General greeting

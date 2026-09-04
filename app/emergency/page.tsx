@@ -1,63 +1,75 @@
-import { AlertTriangle, Phone, Mail, MessageCircle, Heart, Shield, Clock } from "lucide-react"
+import type { Metadata } from "next"
+import { AlertTriangle, Shield, MessageCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
+export const metadata: Metadata = {
+  title: "Emergency & Crisis Resources",
+  description:
+    "In crisis? Find 24/7 emergency mental health resources and hotlines in Kenya, including Kenya Red Cross, Befrienders Kenya, NACADA, and GBV support lines.",
+  robots: { index: true, follow: true },
+}
+
+interface Contact {
+  name: string
+  phone?: string
+  altPhone?: string
+  description?: string
+}
+
+interface ResourceGroup {
+  title: string
+  contacts: Contact[]
+}
+
+const resourceGroups: ResourceGroup[] = [
+  {
+    title: "If you're in immediate danger",
+    contacts: [
+      { name: "Emergency Services (Police / Fire / Ambulance)", phone: "999", altPhone: "112" },
+      { name: "Kenya Red Cross Emergency Line", phone: "1199" },
+    ],
+  },
+  {
+    title: "Suicide & emotional crisis support",
+    contacts: [
+      {
+        name: "Befrienders Kenya",
+        phone: "+254 722 178 177",
+        altPhone: "+254 793 594 849 · +254 754 580 252",
+        description: "Call, SMS, or WhatsApp, Mon–Sun 9am–5pm",
+      },
+      { name: "Niskize", phone: "0900 620 800" },
+      { name: "Emergency Medicine Kenya Foundation", phone: "0800 723 253" },
+    ],
+  },
+  {
+    title: "Gender-based & domestic violence",
+    contacts: [
+      { name: "GBV Helpline", phone: "1195", altPhone: "1196 (for men) · SMS \"HELP\" to 1198" },
+      { name: "Gender Violence Recovery Centre", phone: "0800 720 565" },
+      { name: "Coalition on Violence Against Women (COVAW)", phone: "0800 720 553" },
+    ],
+  },
+  {
+    title: "Substance use & addiction",
+    contacts: [{ name: "NACADA Toll-Free Helpline", phone: "1192" }],
+  },
+  {
+    title: "Children",
+    contacts: [{ name: "National Child Helpline", phone: "116" }],
+  },
+  {
+    title: "Low-cost / free counselling in major towns",
+    contacts: [
+      { name: "Kenyatta National Hospital Youth Centre", description: "Free counselling for under-25s" },
+      { name: "Amani Counselling Centre", description: "Nairobi, Mombasa, Kisumu" },
+      { name: "Kamili Mental Health Organisation", phone: "0700 327 701" },
+    ],
+  },
+]
+
 export default function EmergencyPage() {
-  const emergencyContacts = [
-    {
-      name: "Kenya Red Cross Society - Psychosocial Support",
-      phone: "1199",
-      altPhone: "+254 703 037 000",
-      description: "24/7 emotional and psychological support hotline",
-      availability: "24/7",
-    },
-    {
-      name: "Befrienders Kenya",
-      phone: "+254 722 178 177",
-      email: "befrienderskenya@gmail.com",
-      description: "Suicide prevention and emotional support",
-      availability: "24/7",
-    },
-    {
-      name: "Amani Counselling Centre",
-      phone: "+254 719 637 506",
-      email: "info@amanicounselling.org",
-      description: "Professional counseling and mental health support",
-      availability: "Mon-Fri 8AM-5PM",
-    },
-    {
-      name: "PCEA Tunza Counselling Centre",
-      phone: "+254 712 906 810",
-      description: "Faith-based counseling and mental health services",
-      availability: "Mon-Fri 9AM-5PM",
-    },
-    {
-      name: "Moi Teaching and Referral Hospital - Mental Health",
-      phone: "+254 53 203 3471",
-      description: "Emergency psychiatric services and crisis intervention",
-      availability: "24/7 Emergency",
-    },
-    {
-      name: "Chiromo Hospital Group - Mental Health",
-      phone: "+254 709 949 000",
-      description: "Private psychiatric emergency services",
-      availability: "24/7",
-    },
-  ]
-
-  const internationalContacts = [
-    {
-      name: "International Association for Suicide Prevention",
-      website: "https://www.iasp.info/resources/Crisis_Centres/",
-      description: "Global directory of crisis centers",
-    },
-    {
-      name: "Crisis Text Line (Global)",
-      info: "Text HOME to 741741",
-      description: "Free 24/7 crisis support via text",
-    },
-  ]
-
   return (
     <main className="min-h-screen">
       {/* Alert Banner */}
@@ -68,8 +80,8 @@ export default function EmergencyPage() {
             <div>
               <h2 className="text-xl font-bold text-red-900 mb-2">If you are in immediate danger</h2>
               <p className="text-red-800 mb-3">
-                Call 999, 911, or 112 for emergency services. If you are experiencing suicidal thoughts or a mental
-                health crisis, please call one of the hotlines below immediately.
+                Call 999 or 112 for emergency services. If you are experiencing suicidal thoughts or a mental health
+                crisis, please call one of the hotlines below immediately.
               </p>
               <div className="flex flex-wrap gap-3">
                 <Button asChild size="lg" className="bg-red-600 hover:bg-red-700">
@@ -97,74 +109,40 @@ export default function EmergencyPage() {
             Emergency Mental Health Resources
           </h1>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto text-pretty">
-            You are not alone. Help is available 24/7. These resources provide immediate support for mental health
-            crises, suicidal thoughts, and emotional distress.
+            You are not alone. Help is available. These resources provide immediate support for mental health
+            crises, suicidal thoughts, and emotional distress, across Kenya.
           </p>
         </div>
 
-        {/* Kenya Emergency Contacts */}
-        <div className="mb-16">
-          <div className="flex items-center gap-3 mb-8">
-            <Shield className="w-8 h-8 text-primary" />
-            <h2 className="text-3xl font-bold text-foreground">Kenya Crisis Hotlines</h2>
-          </div>
-          <div className="overflow-x-auto rounded-lg border border-border">
-            <table className="w-full">
-              <thead>
-                <tr style={{ backgroundColor: 'var(--emergency-table-header)' }} className="text-white">
-                  <th className="px-6 py-4 text-left font-semibold">Organisation Name</th>
-                  <th className="px-6 py-4 text-left font-semibold">Phone Number</th>
-                  <th className="px-6 py-4 text-left font-semibold">Areas of Assistance</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr style={{ backgroundColor: 'var(--emergency-table-body)', borderTopColor: 'var(--emergency-table-border)' }} className="border-t text-white hover:opacity-90 transition-opacity">
-                  <td className="px-6 py-4">Red Cross</td>
-                  <td className="px-6 py-4">1199</td>
-                  <td className="px-6 py-4">All</td>
-                </tr>
-                <tr style={{ backgroundColor: 'var(--emergency-table-body)', borderTopColor: 'var(--emergency-table-border)' }} className="border-t text-white hover:opacity-90 transition-opacity">
-                  <td className="px-6 py-4">NACADA</td>
-                  <td className="px-6 py-4">1192</td>
-                  <td className="px-6 py-4">Drug abuse and recovery</td>
-                </tr>
-                <tr style={{ backgroundColor: 'var(--emergency-table-body)', borderTopColor: 'var(--emergency-table-border)' }} className="border-t text-white hover:opacity-90 transition-opacity">
-                  <td className="px-6 py-4">Center for Suicide Research and Intervention (CSRI)</td>
-                  <td className="px-6 py-4">+254 703 388 130</td>
-                  <td className="px-6 py-4">Suicide and Mental Health Crises</td>
-                </tr>
-                <tr style={{ backgroundColor: 'var(--emergency-table-body)', borderTopColor: 'var(--emergency-table-border)' }} className="border-t text-white hover:opacity-90 transition-opacity">
-                  <td className="px-6 py-4">Sexual and Gender Violence Helpline</td>
-                  <td className="px-6 py-4">1195</td>
-                  <td className="px-6 py-4">Sexual and gender-based violence</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        {/* International Resources */}
-        <div className="mb-16">
-          <div className="flex items-center gap-3 mb-8">
-            <Heart className="w-8 h-8 text-primary" />
-            <h2 className="text-3xl font-bold text-foreground">International Resources</h2>
-          </div>
-          <div className="grid gap-6">
-            {internationalContacts.map((contact, index) => (
-              <div key={index} className="bg-card border border-border rounded-lg p-6">
-                <h3 className="text-xl font-semibold text-foreground mb-2">{contact.name}</h3>
-                <p className="text-muted-foreground mb-3">{contact.description}</p>
-                {contact.website && (
-                  <Button asChild variant="outline">
-                    <a href={contact.website} target="_blank" rel="noopener noreferrer">
-                      Visit Website
-                    </a>
-                  </Button>
-                )}
-                {contact.info && <p className="text-sm font-medium text-foreground mt-2">{contact.info}</p>}
+        {/* Resource Groups */}
+        <div className="space-y-12 mb-16">
+          {resourceGroups.map((group) => (
+            <div key={group.title}>
+              <div className="flex items-center gap-3 mb-6">
+                <Shield className="w-6 h-6 text-primary" />
+                <h2 className="text-2xl font-bold text-foreground">{group.title}</h2>
               </div>
-            ))}
-          </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {group.contacts.map((contact) => (
+                  <div key={contact.name} className="bg-card border border-border rounded-lg p-6">
+                    <h3 className="font-semibold text-foreground mb-1">{contact.name}</h3>
+                    {contact.phone && (
+                      <a
+                        href={`tel:${contact.phone.replace(/[^\d+]/g, "")}`}
+                        className="text-primary font-medium hover:underline block"
+                      >
+                        {contact.phone}
+                      </a>
+                    )}
+                    {contact.altPhone && <p className="text-sm text-muted-foreground mt-1">{contact.altPhone}</p>}
+                    {contact.description && (
+                      <p className="text-sm text-muted-foreground mt-1">{contact.description}</p>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
 
         {/* Additional Support */}
@@ -172,8 +150,8 @@ export default function EmergencyPage() {
           <MessageCircle className="w-12 h-12 text-primary mx-auto mb-4" />
           <h2 className="text-2xl font-bold text-foreground mb-4">Need Non-Emergency Support?</h2>
           <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-            For non-crisis mental health support, schedule a session with one of our licensed professionals or use our
-            AI chatbot for immediate guidance.
+            For non-crisis mental health support, schedule a session with one of our licensed professionals or use
+            our chatbot for immediate guidance.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Button asChild size="lg">
@@ -189,8 +167,10 @@ export default function EmergencyPage() {
         <div className="mt-12 bg-amber-50 border border-amber-200 rounded-lg p-6">
           <p className="text-sm text-amber-900">
             <strong>Important:</strong> This website does not provide emergency services. If you are experiencing a
-            life-threatening emergency, please call 999, 911, or your local emergency number immediately. The resources
-            listed here are for informational purposes and to connect you with appropriate crisis support services.
+            life-threatening emergency, please call 999 or 112 immediately. The resources listed here are for
+            informational purposes and to connect you with appropriate crisis support services. Phone numbers and
+            hours are subject to change — please verify directly with each organization if a number doesn't
+            connect.
           </p>
         </div>
       </div>
