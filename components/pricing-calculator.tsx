@@ -316,7 +316,7 @@ export function PricingCalculator() {
                   <p className="text-sm text-muted-foreground mt-2">inclusive of all selected items</p>
                 </div>
                 <Link
-                  href="/book"
+                  href={`/book?selection=${encodeURIComponent(JSON.stringify({ items: selectedItems, total: calculateTotal() }))}`}
                   className="bg-primary text-primary-foreground px-8 py-4 rounded-lg font-semibold hover:opacity-90 transition-opacity whitespace-nowrap"
                 >
                   Proceed to Booking

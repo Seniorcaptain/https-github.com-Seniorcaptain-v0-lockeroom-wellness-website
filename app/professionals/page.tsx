@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Star, MapPin, Clock, DollarSign, Search } from "lucide-react"
+import { Star, MapPin, Clock, Search } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { professionals } from "@/lib/professionals"
@@ -30,7 +30,7 @@ export default function ProfessionalsPage() {
               Find Your Perfect Therapist
             </h1>
             <p className="text-lg text-muted-foreground text-balance">
-              Browse our network of 500+ licensed mental health professionals ready to support you.
+              Meet our trusted professionals, Dr. Loise Brenda and Malusha Manase, ready to support you.
             </p>
           </div>
 
@@ -129,10 +129,6 @@ export default function ProfessionalsPage() {
 
                   {/* Details */}
                   <div className="space-y-2 mb-6 text-sm text-muted-foreground">
-                    <div className="flex items-center gap-2">
-                      <DollarSign className="w-4 h-4" />
-                      <span>${professional.hourlyRate}/hour</span>
-                    </div>
                     <div className="flex items-center gap-2">
                       <Clock className="w-4 h-4" />
                       <span>{professional.availability}</span>

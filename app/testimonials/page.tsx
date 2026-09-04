@@ -54,7 +54,7 @@ const testimonials = [
     role: "Entrepreneur",
     location: "Kisumu",
     content:
-      "Running a startup is stressful, and I needed support. The ability to book sessions on my schedule was perfect. Dr. Michael's coaching helped me develop better coping strategies and improve my overall wellbeing.",
+      "Running a startup is stressful, and I needed support. The ability to book sessions on my schedule was perfect. Malusha's support helped me develop better coping strategies and improve my overall wellbeing.",
     rating: 5,
     image: "/testimonial-user-5.jpg",
   },

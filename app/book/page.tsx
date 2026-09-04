@@ -1,7 +1,9 @@
 "use client"
 
 import { useState } from "react"
-import { ChevronRight, Calendar, Clock, User, DollarSign } from "lucide-react"
+import { useSearchParams } from "next/navigation"
+import { ChevronRight, Calendar, Clock, User, Wallet } from "lucide-react"
+import { Suspense } from "react"
 import Image from "next/image"
 import { professionals as allProfessionals } from "@/lib/professionals"
 
@@ -15,11 +17,15 @@ interface BookingData {
   notes: string
 }
 
+interface PricingSelection {
+  items: Record<string, number>
+  total: number
+}
+
 const professionals = allProfessionals.map((p) => ({
-  id: String(p.id),
+  id: p.id,
   name: p.name,
   specialty: p.specialty,
-  rate: p.hourlyRate,
   image: p.image,
 }))
 
@@ -31,17 +37,30 @@ const sessionTypes = [
 
 const timeSlots = ["9:00 AM", "10:00 AM", "11:00 AM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM"]
 
-export default function BookPage() {
+function BookingContent() {
+  const searchParams = useSearchParams()
   const [currentStep, setCurrentStep] = useState<BookingStep>("professional")
   const [bookingData, setBookingData] = useState<BookingData>({
-    professional: "",
+    professional: searchParams.get("professional") || "",
     date: "",
     time: "",
     sessionType: "initial",
     notes: "",
   })
 
+  let pricingSelection: PricingSelection | null = null
+  try {
+    const rawSelection = searchParams.get("selection")
+    pricingSelection = rawSelection ? JSON.parse(rawSelection) : null
+  } catch {
+    pricingSelection = null
+  }
+
   const selectedProfessional = professionals.find((p) => p.id === bookingData.professional)
+  const selectedBalance = pricingSelection?.total ?? 0
+  const selectedServiceCount = pricingSelection
+    ? Object.values(pricingSelection.items).reduce((total, quantity) => total + quantity, 0)
+    : 0
 
   const handleNext = () => {
     const steps: BookingStep[] = ["professional", "date", "time", "details", "confirmation"]
@@ -145,7 +164,6 @@ export default function BookPage() {
                       <div className="flex-1">
                         <h3 className="font-semibold text-foreground">{professional.name}</h3>
                         <p className="text-sm text-muted-foreground mb-2">{professional.specialty}</p>
-                        <p className="text-sm font-medium text-primary">${professional.rate}/hour</p>
                       </div>
                     </div>
                   </button>
@@ -295,12 +313,17 @@ export default function BookPage() {
                   </div>
                 </div>
 
-                {/* Price */}
+                {/* Selected service balance */}
                 <div className="bg-secondary rounded-lg p-4 flex items-start gap-4">
-                  <DollarSign className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
+                  <Wallet className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
                   <div className="flex-1">
-                    <p className="text-sm text-muted-foreground">Session Cost</p>
-                    <p className="font-semibold text-foreground">${selectedProfessional?.rate}</p>
+                    <p className="text-sm text-muted-foreground">Selected Services</p>
+                    <p className="font-semibold text-foreground">
+                      {selectedServiceCount > 0 ? `${selectedServiceCount} service${selectedServiceCount === 1 ? "" : "s"}` : "Choose a service on Pricing"}
+                    </p>
+                    <p className="text-lg font-bold text-primary">
+                      {selectedBalance > 0 ? `KES ${selectedBalance.toLocaleString()}` : "Balance to be confirmed"}
+                    </p>
                   </div>
                 </div>
 
@@ -357,5 +380,13 @@ export default function BookPage() {
         </div>
       </div>
     </main>
+  )
+}
+
+export default function BookPage() {
+  return (
+    <Suspense fallback={<main className="min-h-screen bg-background" aria-busy="true" />}>
+      <BookingContent />
+    </Suspense>
   )
 }

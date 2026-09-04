@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Star, Clock, DollarSign, Calendar, MessageSquare } from "lucide-react"
+import { Star, Clock, Calendar, MessageSquare } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { getProfessionalById } from "@/lib/professionals"
@@ -75,14 +75,7 @@ export default async function ProfessionalDetailPage({ params }: { params: Promi
               </div>
 
               {/* Quick Info */}
-              <div className="grid grid-cols-2 gap-4 mb-8">
-                <div className="bg-secondary rounded-lg p-4">
-                  <div className="flex items-center gap-2 text-muted-foreground mb-1">
-                    <DollarSign className="w-4 h-4" />
-                    <span className="text-sm">Hourly Rate</span>
-                  </div>
-                  <p className="text-2xl font-bold text-foreground">${professional.hourlyRate}</p>
-                </div>
+              <div className="grid grid-cols-1 gap-4 mb-8">
                 <div className="bg-secondary rounded-lg p-4">
                   <div className="flex items-center gap-2 text-muted-foreground mb-1">
                     <Clock className="w-4 h-4" />
@@ -184,7 +177,7 @@ export default async function ProfessionalDetailPage({ params }: { params: Promi
 
                   {/* CTA */}
                   <Link
-                    href="/book"
+href={`/book?professional=${professional.id}`}
                     className="w-full bg-primary text-primary-foreground py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity text-center block"
                   >
                     Book Now
