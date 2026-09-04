@@ -122,7 +122,7 @@ export default function Footer() {
 
         {/* Bottom */}
         <div className="border-t border-border pt-8 text-center text-sm text-muted-foreground">
-          <p>&copy; 2025 Lockeroom Wellness. All rights reserved.</p>
+          <p>&copy; 2025–2026 Lockeroom Wellness. All rights reserved.</p>
         </div>
       </div>
     </footer>
