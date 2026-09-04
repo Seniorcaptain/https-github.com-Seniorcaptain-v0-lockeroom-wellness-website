@@ -42,14 +42,17 @@ export default function HeroSection() {
           {/* Right Visual */}
           <div className="hidden min-h-[calc(100vh-4rem)] lg:block">
             <div className="relative h-full min-h-[calc(100vh-4rem)] overflow-hidden bg-secondary">
-              <Image
-                src="/professional-therapist-woman.png"
-                alt="A therapist ready to listen in a calm wellness space"
-                fill
-                sizes="50vw"
-                className="object-cover object-top"
-                priority
-              />
+              <video
+                className="absolute inset-0 size-full object-cover object-center"
+                autoPlay
+                muted
+                loop
+                playsInline
+                poster="/professional-therapist-woman.png"
+                aria-label="A calming wellness space for therapy and reflection"
+              >
+                <source src="/landing-wellness.mp4" type="video/mp4" />
+              </video>
               <div className="absolute inset-x-8 bottom-8 rounded-md bg-background/95 p-5 shadow-lg backdrop-blur-sm">
                 <p className="font-serif text-xl text-foreground">A calmer space starts here.</p>
                 <p className="mt-1 text-sm leading-relaxed text-muted-foreground">Private, compassionate care from professionals who understand.</p>
@@ -57,7 +60,23 @@ export default function HeroSection() {
             </div>
           </div>
 
-
+          <div className="relative min-h-[24rem] overflow-hidden bg-secondary lg:hidden">
+            <video
+              className="absolute inset-0 size-full object-cover object-center"
+              autoPlay
+              muted
+              loop
+              playsInline
+              poster="/professional-therapist-woman.png"
+              aria-label="A calming wellness space for therapy and reflection"
+            >
+              <source src="/landing-wellness.mp4" type="video/mp4" />
+            </video>
+            <div className="absolute inset-x-5 bottom-5 rounded-md bg-background/95 p-4 shadow-lg backdrop-blur-sm">
+              <p className="font-serif text-lg text-foreground">A calmer space starts here.</p>
+              <p className="mt-1 text-sm leading-relaxed text-muted-foreground">Private, compassionate care for your wellbeing.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
