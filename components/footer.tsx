@@ -100,10 +100,6 @@ export default function Footer() {
                 <Mail className="w-4 h-4" />
                 <div className="space-y-1">
                   <a href="mailto:Loisebrenda@lockeroomwellness.com" className="block hover:text-primary transition-colors">Loisebrenda@lockeroomwellness.com</a>
-                  <a href="mailto:MalushaManase@lockeroomwellness.com" className="block hover:text-primary transition-colors">MalushaManase@lockeroomwellness.com</a>
-                  <a href="mailto:Sales@lockeroomwellness.com" className="block hover:text-primary transition-colors">Sales@lockeroomwellness.com</a>
-                  <a href="mailto:Billing@lockeroomwellness.com" className="block hover:text-primary transition-colors">Billing@lockeroomwellness.com</a>
-                  <a href="mailto:Lockerroomwellnes@lockeroomwellness.com" className="block hover:text-primary transition-colors">Lockerroomwellnes@lockeroomwellness.com</a>
                 </div>
               </li>
               <li className="flex items-center gap-2 text-muted-foreground">

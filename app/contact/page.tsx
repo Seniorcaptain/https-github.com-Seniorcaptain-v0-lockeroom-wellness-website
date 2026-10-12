@@ -27,18 +27,15 @@ export default function ContactPage() {
     setIsSubmitting(true)
 
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      })
+      const subject = formData.subject || "Contact form message"
+      const body = [
+        `Name: ${formData.name}`,
+        `Email: ${formData.email}`,
+        "",
+        formData.message,
+      ].join("\n")
 
-      const data = await response.json()
-
-      if (!response.ok) {
-        throw new Error(data.error || "Failed to send your message.")
-      }
-
+      window.location.href = `mailto:Loisebrenda@lockeroomwellness.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
       setSubmitted(true)
       setFormData({ name: "", email: "", subject: "", message: "" })
       setTimeout(() => setSubmitted(false), 5000)
@@ -80,7 +77,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-foreground mb-1">Email</h3>
-                  <p className="text-muted-foreground">support@lockeroomwellness.ke</p>
+                  <p className="text-muted-foreground">Loisebrenda@lockeroomwellness.com</p>
                   <p className="text-sm text-muted-foreground">We'll respond within 24 hours</p>
                 </div>
               </div>
