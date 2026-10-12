@@ -100,8 +100,8 @@ export default function TermsPage() {
             <h2 className="text-2xl font-bold mb-3">9. Contact</h2>
             <p className="text-muted-foreground">
               Questions about these Terms can be sent to{" "}
-              <a href="mailto:support@lockeroomwellness.ke" className="text-primary underline">
-                support@lockeroomwellness.ke
+              <a href="mailto:Loisebrenda@lockeroomwellness.com" className="text-primary underline">
+                Loisebrenda@lockeroomwellness.com
               </a>
               .
             </p>

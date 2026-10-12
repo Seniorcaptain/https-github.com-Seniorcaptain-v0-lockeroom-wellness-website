@@ -1,6 +1,7 @@
 export interface Professional {
   id: string
   name: string
+  email: string
   specialty: string
   credentials: string
   rating: number
@@ -20,6 +21,7 @@ export const professionals: Professional[] = [
   {
     id: "loise-brenda",
     name: "Dr. Loise Brenda",
+    email: "Loisebrenda@lockeroomwellness.com",
     specialty: "Anxiety, Depression & Personal Growth",
     credentials: "Clinical Psychologist",
     rating: 4.9,
@@ -37,6 +39,7 @@ export const professionals: Professional[] = [
   {
     id: "malusha-manase",
     name: "Malusha Manase",
+    email: "MalushaManase@lockeroomwellness.com",
     specialty: "Relationships, Family & Life Transitions",
     credentials: "Counsellor & Wellness Practitioner",
     rating: 4.8,

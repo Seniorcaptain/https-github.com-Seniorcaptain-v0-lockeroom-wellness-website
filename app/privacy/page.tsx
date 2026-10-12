@@ -76,8 +76,8 @@ export default function PrivacyPage() {
               Under the Data Protection Act, 2019, you have the right to access, correct, or delete your personal
               data, to object to or restrict certain processing, and to lodge a complaint with the Office of the
               Data Protection Commissioner. To exercise these rights, contact us at{" "}
-              <a href="mailto:support@lockeroomwellness.ke" className="text-primary underline">
-                support@lockeroomwellness.ke
+              <a href="mailto:Loisebrenda@lockeroomwellness.com" className="text-primary underline">
+                Loisebrenda@lockeroomwellness.com
               </a>
               .
             </p>
@@ -95,8 +95,8 @@ export default function PrivacyPage() {
             <h2 className="text-2xl font-bold mb-3">8. Contact Us</h2>
             <p className="text-muted-foreground">
               Questions about this policy or your data can be sent to{" "}
-              <a href="mailto:support@lockeroomwellness.ke" className="text-primary underline">
-                support@lockeroomwellness.ke
+              <a href="mailto:Loisebrenda@lockeroomwellness.com" className="text-primary underline">
+                Loisebrenda@lockeroomwellness.com
               </a>{" "}
               or by phone at{" "}
               <a href="tel:+254702123456" className="text-primary underline">
