@@ -1,7 +1,7 @@
 import Link from "next/link"
 
 const whatsappLink =
-  "https://wa.me/254702123456?text=Hi%20Lockeroom%20Wellness%2C%20I%27d%20like%20to%20talk%20to%20someone."
+  "https://wa.me/254721217735?text=Hi%20Lockeroom%20Wellness%2C%20I%27d%20like%20to%20talk%20to%20someone."
 
 export default function CTASection() {
   return (

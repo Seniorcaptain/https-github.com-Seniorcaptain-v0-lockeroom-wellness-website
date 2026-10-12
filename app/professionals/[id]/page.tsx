@@ -94,10 +94,13 @@ export default async function ProfessionalDetailPage({ params }: { params: Promi
                   <Calendar className="w-5 h-5" />
                   Book Session
                 </Link>
-                <button className="flex items-center justify-center gap-2 border-2 border-primary text-primary px-6 py-3 rounded-lg font-semibold hover:bg-primary hover:text-primary-foreground transition-colors">
+                <a
+                  href={`mailto:${professional.email}?subject=${encodeURIComponent(`Message for ${professional.name}`)}`}
+                  className="flex items-center justify-center gap-2 border-2 border-primary text-primary px-6 py-3 rounded-lg font-semibold hover:bg-primary hover:text-primary-foreground transition-colors"
+                >
                   <MessageSquare className="w-5 h-5" />
-                  Message
-                </button>
+                  Send Message
+                </a>
               </div>
             </div>
           </div>

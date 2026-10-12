@@ -83,7 +83,7 @@ export default function Chatbot() {
 
     // Contact/support
     if (lowerMessage.includes("contact") || lowerMessage.includes("email") || lowerMessage.includes("phone")) {
-      return "You can reach Lockeroom Wellness at Loisebrenda@lockeroomwellness.com or +254 702 123 456. WhatsApp is also available for quick inquiries. Would you like to visit our Contact page to send us a message?"
+      return "You can reach Lockeroom Wellness at Loisebrenda@lockeroomwellness.com or WhatsApp 0721217735. Would you like to visit our Contact page to send us a message?"
     }
 
     // General greeting
